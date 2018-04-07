@@ -1,0 +1,21 @@
+{
+  "plugins": [
+    ["module-resolver", { "alias": { "~": "./src" } }],
+    "transform-object-rest-spread"
+  ],
+  "presets": ["flow", ["env", { "targets": { "node": "8.7" } }]],
+  "env": {
+    "test": {
+      "plugins": [
+        [
+          "flow-runtime",
+          {
+            "assert": false,
+            "annotate": false
+          }
+        ],
+        "transform-es2015-modules-commonjs"
+      ]
+    }
+  }
+}
