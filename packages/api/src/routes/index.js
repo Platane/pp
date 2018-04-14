@@ -1,4 +1,9 @@
 import health from './health'
-import question from './question'
+import graphql from './graphql'
 
-export default router => [health, question].forEach(f => f(router))
+export default router =>
+  [
+    //
+    health,
+    graphql,
+  ].forEach(f => f(router))

@@ -4,6 +4,9 @@
   "private": true,
   "dependencies": {
     "@google-cloud/datastore": "1.4.0",
+    "apollo-server-koa": "^1.3.4",
+    "graphql": "^0.13.2",
+    "graphql-tools": "^2.23.1",
     "koa": "2.5.0",
     "koa-bodyparser": "4.2.0",
     "koa-router": "7.4.0",
@@ -29,8 +32,7 @@
   },
   "scripts": {
     "start": "node -e \"require('./lib').create()\"",
-    "start:dev":
-      "nodemon -e \"require('babel-register');require('./src').create()\"",
+    "start:dev": "nodemon start.js",
     "build:test": "rm -rf lib && NODE_ENV=test babel --out-dir ./lib ./src"
   }
 }
