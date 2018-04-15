@@ -11,14 +11,17 @@ const safeJSONparse = s => {
 
 export default (
   url?: string,
-  { query = {}, method = 'GET', body, token, headers = {} } = {}
+  { query = {}, method = 'GET', body, token, userId, headers = {} } = {}
 ) =>
   fetch(`${url}?${stringify(query)}`, {
     method: method || 'GET',
     body: (body && JSON.stringify(body)) || null,
     headers: {
       ...headers,
-      Authorization: `Bearer ${token || 'anonym'}`,
+      Authorization:
+        (userId && `Basic ${btoa(`${userId}:xxx`)}`) ||
+        (token && `Bearer ${token}`) ||
+        null,
       'content-type': (body && 'application/json') || null,
     },
   })

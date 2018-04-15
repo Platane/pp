@@ -5,8 +5,12 @@ import { SENTRY_DSN } from '~/config'
 
 import { create } from './store/index'
 
-// import { init as initUi } from '~/sideEffect/ui'
+import { init as initUi } from '~/sideEffect/ui'
 import { init as initResourceFetcher } from '~/sideEffect/resourceFetcher'
+// export {
+//   initSideEffect as initRouter,
+// } from 'declarative-router/lib/redux/sideEffect'
+// export { createNavigator } from 'declarative-router/lib/navigator/dom'
 
 const dr = {
   ...require('../../../../declarative-router/src/redux'),
@@ -26,6 +30,6 @@ if (SENTRY_DSN) {
 const sideEffects = [
   dr.initSideEffect({ navigator: dr.createNavigator() }),
   initResourceFetcher,
-  // initUi,
+  initUi,
 ]
 Raven.context(() => create(sideEffects))

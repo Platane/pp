@@ -1,9 +1,11 @@
 export const routes = [
+  { path: '/', key: 'home' },
+  { path: '/instruction', key: 'instruction' },
   { path: '/about', key: 'about' },
-  { path: '/:userId', key: 'home' },
-  { path: '/:userId/session/:sessionId/result', key: 'sessionResult' },
+  { path: '/instruction', key: 'instruction' },
+  { path: '/session/:sessionId/result', key: 'sessionResult' },
   {
-    path: '/:userId/session/:sessionId/step/:questionId',
-    key: 'sessionQuestion',
+    path: '/session/:sessionId/step/:lineId',
+    key: 'sessionLine',
   },
 ]

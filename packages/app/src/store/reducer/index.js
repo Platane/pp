@@ -10,10 +10,13 @@ import {
   reduceGlobal as routerGlobal,
 } from './router'
 
-export const reduce = combineReducers({
-  resource,
-  router,
-})
+export const reduce = chainReducer(
+  combineReducers({
+    resource,
+    router,
+  }),
+  routerGlobal
+)
 
 export const defaultState = {
   resource: resourceDefaultState,
