@@ -2,6 +2,8 @@ import { h, Component } from 'preact'
 import styled from 'preact-emotion'
 
 import { Splash } from '~/component/_page/Splash'
+import { SessionLine } from '~/component/_page/SessionLine'
+import { SessionResult } from '~/component/_page/SessionResult'
 import { Instruction } from '~/component/_page/Instruction'
 import { Wallpaper } from '~/component/Wallpaper'
 
@@ -14,10 +16,10 @@ export const Content = ({ router }) => {
       return <Instruction />
 
     case 'sessionLine':
-    // return <SessionLine {...router.param} />
+      return <SessionLine {...router.param} />
 
     case 'sessionResult':
-    // return <SessionStat {...router.param} />
+      return <SessionResult {...router.param} />
 
     default:
       return null

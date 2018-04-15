@@ -8,6 +8,6 @@ export const genUid = () =>
           .slice(2),
       ''
     )
-    .slice(0, 32)
+    .slice(0, 8)
 
 export const genIUid = () => 0 | (Math.random() * (1 << 30))

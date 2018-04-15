@@ -6,7 +6,7 @@ export const Wallpaper = () => <Container />
 
 const Container = styled.div`
   transition: background-color 280ms ease;
-  background-color: #aaa;
+  background-color: #eee;
   position: absolute;
   top: 0;
   left: 0;

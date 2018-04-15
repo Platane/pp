@@ -22,6 +22,7 @@ module.exports = {
 
   resolve: {
     alias: {
+      'react-redux': 'preact-redux',
       react: 'preact-compat',
       'react-dom': 'preact-compat',
     },
@@ -69,4 +70,12 @@ module.exports = {
   ].filter(Boolean),
 
   devtool: production ? 'source-map' : false,
+
+  devServer: {
+    port: 8082,
+    historyApiFallback: true,
+    watchOptions: {
+      ignored: /node_modules/,
+    },
+  },
 }

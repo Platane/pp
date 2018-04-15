@@ -23,7 +23,6 @@ export const exec = async (store, action) => {
   `
 
   const variables = {
-    $sessionId: action.sessionId,
     sessionId: action.sessionId,
   }
 

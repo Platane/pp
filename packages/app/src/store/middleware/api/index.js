@@ -2,10 +2,7 @@ import { genUid } from '~/util/uid'
 
 const handlers = [
   require('./mutation/createSession'),
-  // require('./mutation/updateUser'),
-  // require('./mutation/updateMeal'),
-  // require('./mutation/createMeal'),
-  // require('./mutation/removeMeal'),
+  require('./mutation/setAnswer'),
 ]
 
 export const getHandler = action =>

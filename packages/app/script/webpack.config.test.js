@@ -23,6 +23,7 @@ module.exports = {
   resolve: {
     alias: {
       tape: 'browser-tap',
+      'react-redux': 'preact-redux',
       react: 'preact-compat',
       'react-dom': 'preact-compat',
     },

@@ -5,6 +5,7 @@ const {
 
 import { routes } from './routes'
 import { getSession } from '~/service/normalize'
+import { selectCurrentSession } from '~/store/selector/currentSession'
 
 const resolveRoute = createRouteResolver(routes)
 
@@ -39,5 +40,31 @@ export const reduceGlobal = (state, action) => {
       },
     }
   }
+
+  if (
+    state.router.key == 'sessionLine' ||
+    state.router.key == 'sessionResult'
+  ) {
+    const session = selectCurrentSession(state)
+
+    if (session) {
+      const firstEmptyLine = session.lines.find(
+        x => typeof x.answer != 'boolean'
+      )
+
+      state = {
+        ...state,
+        router: {
+          ...state.router,
+          ...resolveRoute(
+            firstEmptyLine
+              ? `/session/${session.id}/step/${firstEmptyLine.question.id}`
+              : `/session/${session.id}/result`
+          ),
+        },
+      }
+    }
+  }
+
   return state
 }

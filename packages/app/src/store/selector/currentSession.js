@@ -9,3 +9,8 @@ export const selectCurrentSession = createSelector(
   selectCurrentSessionId,
   (cache, sessionId) => getSession(cache)(sessionId)
 )
+
+export const selectCurrentSessionFinished = createSelector(
+  selectCurrentSession,
+  session => session && session.lines.every(x => typeof x.answer == 'boolean')
+)
