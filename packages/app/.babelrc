@@ -4,8 +4,7 @@
       "module-resolver",
       {
         "alias": {
-          "~": "./src",
-          "type": "./src/type"
+          "~": "./src"
         }
       }
     ],
@@ -17,8 +16,7 @@
           "VERSION",
           "API_ORIGIN",
           "PATHNAME_BASE",
-          "SENTRY_DSN",
-          "HOST"
+          "SENTRY_DSN"
         ]
       }
     ],
