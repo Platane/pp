@@ -33,6 +33,8 @@
   "scripts": {
     "start": "node -e \"require('./lib').create()\"",
     "start:dev": "nodemon start.js",
-    "build:test": "rm -rf lib && NODE_ENV=test babel --out-dir ./lib ./src"
+    "build:test": "rm -rf lib && NODE_ENV=test babel --out-dir ./lib ./src",
+    "resetdb":
+      "node -e \"require('babel-register');require('./src/__tests__/bootstrap').run()\""
   }
 }

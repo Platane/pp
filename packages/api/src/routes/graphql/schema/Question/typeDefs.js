@@ -4,7 +4,8 @@ enum Category {
   metrics
   business_model
   go_to_market
-  funding_round
+  funding
+  team
 }
   
 type Question {

@@ -2,7 +2,42 @@ import { withUser } from '~/middleware/withUser'
 import { findById } from '~/service/gcpDatastore/query'
 import { parse } from '~/service/gcpDatastore/parse'
 
-const pickQuestions = questions => questions.slice(0, 10)
+const shuffle = arr => {
+  for (let i = arr.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1))
+    ;[arr[i], arr[j]] = [arr[j], arr[i]]
+  }
+
+  return arr
+}
+
+const pickRand = (arr, n) => {
+  const u = arr.map((_, i) => i)
+
+  const pick = []
+
+  while (pick.length < n && u.length > 0)
+    pick.push(arr[u.splice(Math.floor(Math.random() * u.length), 1)])
+
+  return pick
+}
+
+const pickQuestions = questions => {
+  const byCategory = {}
+
+  questions.forEach(x =>
+    (byCategory[x.category] = byCategory[x.category] || []).push(x)
+  )
+
+  const categories = Object.keys(byCategory)
+
+  return () =>
+    shuffle(
+      shuffle(
+        shuffle([].concat(...categories.map(c => pickRand(byCategory[c], 4))))
+      )
+    )
+}
 
 const getQuestions = async datastore => {
   const query = datastore.createQuery('question')
@@ -13,7 +48,7 @@ const getQuestions = async datastore => {
 const createSession_ = async (_, { sessionId }, { datastore, user }) => {
   if (!user) return new Error(401)
 
-  const selectedQuestions = pickQuestions(await getQuestions(datastore))
+  const selectedQuestions = pickQuestions(await getQuestions(datastore))()
 
   const date_created = Date.now()
 
@@ -22,9 +57,10 @@ const createSession_ = async (_, { sessionId }, { datastore, user }) => {
       key: datastore.key(['session', sessionId]),
       data: { userId: user.id, date_created },
     },
-    ...selectedQuestions.map(({ id }) => ({
+    ...selectedQuestions.map(({ id }, index) => ({
       key: datastore.key(['session', sessionId, 'line', id]),
       data: {
+        index,
         answer: null,
         date_answered: null,
       },
