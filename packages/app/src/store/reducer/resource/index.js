@@ -1,13 +1,13 @@
 import { reduce as hydratation } from './hydratation'
 import { reduce as pendingMutation } from './pendingMutation'
 import { reduce as mutation } from './mutation'
+import { reduceGlobal as toFetchGlobal } from './toFetch'
 
 import { chainReducer } from '~/util/reduxHelper'
 
-import type { State } from './type'
-
 export const defaultState = {
-  toFetch: [{ key: 'session.aaaa' }],
+  required: [],
+  toFetch: [],
   pendingMutations: [],
   optimisticBackups: {},
   cache: {},
@@ -21,3 +21,5 @@ export const reduce = chainReducer(
   mutation,
   pendingMutation
 )
+
+export const reduceGlobal = toFetchGlobal

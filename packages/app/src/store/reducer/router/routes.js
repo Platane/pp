@@ -3,6 +3,7 @@ export const routes = [
   { path: '/instruction', key: 'instruction' },
   { path: '/about', key: 'about' },
   { path: '/instruction', key: 'instruction' },
+  { path: '/session/:sessionId', key: 'sessionLine' },
   { path: '/session/:sessionId/result', key: 'sessionResult' },
   {
     path: '/session/:sessionId/step/:lineId',

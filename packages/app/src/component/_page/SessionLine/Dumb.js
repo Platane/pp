@@ -10,7 +10,7 @@ export const SessionLine = ({ setAnswer, question, sessionId, lineId }) =>
       <a onClick={() => setAnswer(sessionId, lineId, true)} href="#">
         yes
       </a>
-      <a onClick={() => setAnswer(sessionId, lineId, true)} href="#">
+      <a onClick={() => setAnswer(sessionId, lineId, false)} href="#">
         no
       </a>
     </Container>

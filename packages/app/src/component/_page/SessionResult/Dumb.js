@@ -5,16 +5,18 @@ import { Link } from '~/component/Link'
 
 const categories = [
   'metrics',
+  'team',
   'business_model',
   'go_to_market',
-  'funding_round',
+  'funding',
 ]
 
 const category_label = {
   metrics: 'Metrics',
   business_model: 'Business model',
   go_to_market: 'Go to market',
-  funding_round: 'Funding round',
+  funding: 'Funding round',
+  team: 'Team',
 }
 
 const CategoryColumn = ({ title, answer, session }) => (

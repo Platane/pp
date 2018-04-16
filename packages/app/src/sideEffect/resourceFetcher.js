@@ -24,16 +24,17 @@ const fetchSession = sessionId => {
 }
 
 export const init = store => {
-  let pending = null
-
   const count = {}
+  const done = {}
 
   const update = async () => {
     const state = store.getState()
 
-    const [next] = state.resource.toFetch
+    const [next] = state.resource.toFetch.filter(x => !done[x.requestKey])
 
-    if (!next || pending) return
+    if (!next) return
+
+    done[next.requestKey] = Date.now()
 
     const [entity, id] = next.key.split('.', 2)
 
@@ -47,15 +48,11 @@ export const init = store => {
 
     if (!promise) return
 
-    pending = true
-
     await promise
       .then(res => store.dispatch(success(res, next)))
       .catch(error => store.dispatch(failure(error, next)))
 
-    // pending = false
-
-    // update()
+    update()
   }
 
   update()
