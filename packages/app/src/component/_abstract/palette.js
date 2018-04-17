@@ -6,4 +6,4 @@ export const vibrant = ['#ffab4c', '#ff7175']
 
 export const borderRadius = 8
 
-export const tranisitionUnit = 280
+export const transitionUnit = 280

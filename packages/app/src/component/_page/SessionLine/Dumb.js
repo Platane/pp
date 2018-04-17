@@ -3,11 +3,16 @@ import styled from 'preact-emotion'
 import { white } from '~/component/_abstract/palette'
 import { Link } from '~/component/Link'
 import { Button } from '~/component/Button'
+import { Timer } from '~/component/Timer'
 
 export const SessionLine = ({ setAnswer, question, sessionId, lineId }) =>
   question ? (
     <Container>
       <Center>
+        <Timer startDate={Date.now()} duration={30000} />
+
+        <Separator />
+
         <QuestionLabel>{question.text}</QuestionLabel>
 
         <ButtonBar>
@@ -54,6 +59,10 @@ const ButtonBar = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
 `
 const Separator = styled.div`
   width: 64px;

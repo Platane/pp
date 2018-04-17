@@ -4,7 +4,7 @@ import {
   vibrant,
   white,
   borderRadius,
-  tranisitionUnit,
+  transitionUnit,
 } from '~/component/_abstract/palette'
 
 const getStyle = ({ outline, color, textColor }) => {
@@ -40,7 +40,7 @@ export const Button = styled.button`
 
   ${p => getStyle(p)};
 
-  transition: transform ${tranisitionUnit}ms ease;
+  transition: transform ${transitionUnit}ms ease;
 
   &:active {
     transition: none;
