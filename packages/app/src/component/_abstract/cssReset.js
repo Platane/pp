@@ -19,15 +19,20 @@ export const injectReset = () => {
       }
       
       html,
+      body {
+        height: 100%;
+        position: relative;
+        margin: 0;
+      }
+      
+      html,
       button,
       input,
       textarea,
       body {
         color: ${black};
-        height: 100%;
-        position: relative;
-        margin: 0;
-        font-family: Lato,Avenir Next,Helvetica Neue,sans-serif;
+        font-family: 'Didact Gothic', sans-serif;
+        letter-spacing: 0.04em;
       }
     `
 }
