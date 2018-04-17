@@ -19,6 +19,9 @@ export const injectReset = () => {
       }
       
       html,
+      button,
+      input,
+      textarea,
       body {
         color: ${black};
         height: 100%;

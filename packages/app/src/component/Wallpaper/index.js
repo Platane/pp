@@ -1,6 +1,5 @@
 import { h } from 'preact'
 import styled, { keyframes, css } from 'preact-emotion'
-import { variant, trio, white } from '~/component/_abstract/palette'
 
 export const Wallpaper = () => <Container />
 
@@ -10,7 +9,7 @@ const fl = keyframes`
 
     const x =
       50 + 20 * Math.cos(k * Math.PI * 2) + 20 * Math.sin(k * Math.PI * 2 * 3)
-    const y = 50 + 50 * Math.sin(k * Math.PI * 5)
+    const y = 50 + 50 * Math.sin(k * Math.PI * 2 + 123)
 
     return `${Math.round(k * 100)}% {background-position: ${x}% ${y}%}`
   })}
@@ -31,5 +30,5 @@ const Container = styled.div`
   height: 100%;
   background-image: url(${dataUrl});
   background-size: calc(200%) calc(200%);
-  animation: ${fl} 10s linear infinite;
+  animation: ${fl} 60s linear infinite;
 `

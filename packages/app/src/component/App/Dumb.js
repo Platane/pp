@@ -38,6 +38,8 @@ export const App = props => (
 const ContentWrap = styled.div`
   flex: 0px 1 1;
   position: relative;
+  display: flex;
+  flex-direction: column;
 `
 
 const Container = styled.div`
