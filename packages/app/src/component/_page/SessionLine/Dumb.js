@@ -35,6 +35,7 @@ const QuestionLabel = styled.h1`
   color: ${white};
   margin: 64px 0;
   text-align: center;
+  font-size: 2em;
 `
 
 const Container = styled.div`
