@@ -5,11 +5,18 @@ import { Link } from '~/component/Link'
 import { Button } from '~/component/Button'
 import { Timer } from '~/component/Timer'
 
-export const SessionLine = ({ setAnswer, question, sessionId, lineId }) =>
+export const SessionLine = ({
+  setAnswer,
+  question,
+  sessionId,
+  lineId,
+  startDate,
+  duration,
+}) =>
   question ? (
     <Container>
       <Center>
-        <Timer startDate={Date.now()} duration={30000} />
+        <Timer startDate={startDate} duration={duration} />
 
         <Separator />
 

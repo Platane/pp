@@ -13,6 +13,8 @@ const injectState = connect(
           sessionId: selectCurrentSessionId(state),
           lineId: line.question.id,
           question: line.question,
+
+          ...state.timeout,
         }
       : {}
   },

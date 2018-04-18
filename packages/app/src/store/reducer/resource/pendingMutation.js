@@ -1,8 +1,6 @@
 import { set } from '~/util/reduxHelper'
 
-import type { State } from './type'
-
-export const reduce = (state: State, action): State => {
+export const reduce = (state, action) => {
   switch (action.type) {
     case 'mutation:start':
       return set(

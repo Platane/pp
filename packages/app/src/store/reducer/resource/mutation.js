@@ -1,8 +1,6 @@
 import { getHandler } from '~/store/middleware/api'
 
-import type { State } from './type'
-
-export const reduce = (state: State, action): State => {
+export const reduce = (state, action) => {
   switch (action.type) {
     case 'mutation:start': {
       const handler = getHandler(action.action)

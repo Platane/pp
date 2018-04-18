@@ -7,6 +7,7 @@ import { create } from './store/index'
 
 import { init as initUi } from '~/sideEffect/ui'
 import { init as initResourceFetcher } from '~/sideEffect/resourceFetcher'
+import { init as initTimeout } from '~/sideEffect/timeout'
 // export {
 //   initSideEffect as initRouter,
 // } from 'declarative-router/lib/redux/sideEffect'
@@ -30,6 +31,7 @@ if (SENTRY_DSN) {
 const sideEffects = [
   dr.initSideEffect({ navigator: dr.createNavigator() }),
   initResourceFetcher,
+  initTimeout,
   initUi,
 ]
 Raven.context(() => create(sideEffects))
