@@ -75,7 +75,7 @@ const Container = styled.div`
 `
 const Center = styled.div`
   width: calc(100% - 64px);
-  max-width: 800px;
+  max-width: 940px;
   margin: 64px auto;
   background-color: ${white};
   border-radius: 32px;
