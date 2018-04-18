@@ -36,7 +36,7 @@ export const App = props => (
 )
 
 const ContentWrap = styled.div`
-  flex: 0px 1 1;
+  flex: auto 1 1;
   position: relative;
   display: flex;
   flex-direction: column;

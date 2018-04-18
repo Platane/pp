@@ -91,7 +91,7 @@ const Row = styled.div`
 `
 
 const Column = styled.div`
-  flex: 50% 0 0;
+  flex: 50% 0 1;
   color: ${props => props.color};
 `
 const Category = styled.div``
