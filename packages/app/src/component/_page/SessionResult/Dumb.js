@@ -36,6 +36,9 @@ export const SessionResult = ({ session, startNewSession }) =>
             answer={true}
             color={vibrant[0]}
           />
+
+          <Separator />
+
           <CategoryColumn
             title="You don't"
             session={session}
@@ -43,6 +46,8 @@ export const SessionResult = ({ session, startNewSession }) =>
             color={vibrant[1]}
           />
         </Row>
+
+        <Separator />
 
         <ButtonBar>
           <Button onClick={startNewSession} color={vibrant[1]}>
@@ -79,10 +84,14 @@ const Center = styled.div`
 const Row = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
 `
 
 const Column = styled.div`
-  flex: calc(50% - 16px) 1 1;
+  flex: 50% 0 0;
   color: ${props => props.color};
 `
 const Category = styled.div``
@@ -111,4 +120,5 @@ const ButtonBar = styled.div`
 const Separator = styled.div`
   width: 64px;
   height: 64px;
+  flex-shrink: 0;
 `

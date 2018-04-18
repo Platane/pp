@@ -13,15 +13,25 @@ export const Splash = () => (
       <Separator />
 
       <Link href="/instruction">
-        <a>
+        <A>
           <Button color={white} outline>
             I'm ready
           </Button>
-        </a>
+        </A>
       </Link>
     </Center>
   </Container>
 )
+
+const A = styled.a`
+  text-decoration: none;
+
+  &:focus,
+  &:active,
+  &:visited {
+    text-decoration: none;
+  }
+`
 
 const Title = styled.h1`
   font-size: 5em;
