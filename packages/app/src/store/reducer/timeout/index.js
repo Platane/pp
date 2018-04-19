@@ -1,7 +1,7 @@
 import { selectCurrentLineId } from '~/store/selector/currentLine'
 import { set } from '~/util/reduxHelper'
 
-export const defaultState = { duration: 30000, startDate: null }
+export const defaultState = { duration: 10000, startDate: null }
 
 export const reduce = state => state || defaultState
 
