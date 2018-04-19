@@ -23,8 +23,6 @@ const fl = keyframes`
 
     const h = 360 * Math.sin(k * Math.PI * 2) + k * 360 + k * k * 360 * 3
 
-    console.log(h)
-
     return `${Math.round(k * 100)}% {
       background-position: ${x}% ${y}%;
       filter: hue-rotate(${h}deg);

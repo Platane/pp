@@ -7,14 +7,13 @@ import { create } from './store/index'
 
 import { init as initUi } from '~/sideEffect/ui'
 import { init as initResourceFetcher } from '~/sideEffect/resourceFetcher'
+import { init as initServiceWorker } from '~/sideEffect/serviceWorker'
 import { init as initTimeout } from '~/sideEffect/timeout'
 import {
   createDomNavigator,
   initSideEffect as initRouter,
 } from 'declarative-router'
 import * as u from 'declarative-router'
-
-console.log(u)
 
 // init raven
 if (SENTRY_DSN) {
@@ -29,6 +28,7 @@ if (SENTRY_DSN) {
 const sideEffects = [
   initRouter({ navigator: createDomNavigator() }),
   initResourceFetcher,
+  initServiceWorker,
   initTimeout,
   initUi,
 ]
