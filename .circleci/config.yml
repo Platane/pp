@@ -74,27 +74,27 @@ jobs:
       - *activate_gcloud_sdk
       - *attach_workspace
       - run:
-        name: publish into bucket
-        working_directory: packages/app
-        command: |
-          # create the bucket
-          # gsutil mb -c STANDARD -l EUROPE-WEST1 -p $GC_PROJECT gs://$BUCKET || echo 1
+          name: publish into bucket
+          working_directory: packages/app
+          command: |
+            # create the bucket
+            # gsutil mb -c STANDARD -l EUROPE-WEST1 -p $GC_PROJECT gs://$BUCKET || echo 1
 
-          # sync the folder dist with the bucket ( options -d is for removing from the bucket )
-          gsutil -m rsync -r -d dist gs://$BUCKET
+            # sync the folder dist with the bucket ( options -d is for removing from the bucket )
+            gsutil -m rsync -r -d dist gs://$BUCKET
 
-          # use gzip with this files
-          gsutil -m cp -r -z html,css,js,xml,txt,json,map,svg dist/* gs://$BUCKET
+            # use gzip with this files
+            gsutil -m cp -r -z html,css,js,xml,txt,json,map,svg dist/* gs://$BUCKET
 
-          # set the bucket accessibility
-          gsutil -m acl set -R -a public-read gs://$BUCKET
+            # set the bucket accessibility
+            gsutil -m acl set -R -a public-read gs://$BUCKET
 
-          # set the bucket index and 404 files
-          gsutil web set -m index.html -e index.html gs://$BUCKET
+            # set the bucket index and 404 files
+            gsutil web set -m index.html -e index.html gs://$BUCKET
 
-          # set headers for security purpose
-          # will fail : can only set a restricted set of headers
-          # gsutil setmeta -h "x-frame-options:SAMEORIGIN" gs://$BUCKET/index.html
+            # set headers for security purpose
+            # will fail : can only set a restricted set of headers
+            # gsutil setmeta -h "x-frame-options:SAMEORIGIN" gs://$BUCKET/index.html
 
   
 workflows:
