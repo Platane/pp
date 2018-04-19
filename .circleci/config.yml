@@ -54,13 +54,22 @@ jobs:
           working_directory: packages/api
           command: |
             yarn install
-            yarn build:test
       - run: 
           working_directory: packages/app
           command: |
             yarn install
-            yarn build
+      
       - run:  __tests__/run.sh
+      
+      - run: 
+          working_directory: packages/api
+          command: |
+            yarn build
+      - run: 
+          working_directory: packages/app
+          command: |
+            yarn build
+      
       - persist_to_workspace:
           root: *workspace_root
           paths:

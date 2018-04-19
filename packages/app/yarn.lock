@@ -1435,6 +1435,12 @@ browser-resolve@^1.11.2:
   dependencies:
     resolve "1.1.7"
 
+browser-tap@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/browser-tap/-/browser-tap-0.0.1.tgz#5f55f18db79cf5184ba634d8cb88035261321c15"
+  dependencies:
+    tape "^4.5.1"
+
 browserify-aes@^1.0.0, browserify-aes@^1.0.4:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/browserify-aes/-/browserify-aes-1.2.0.tgz#326734642f403dabc3003209853bb70ad428ef48"
@@ -6545,7 +6551,7 @@ tapable@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/tapable/-/tapable-1.0.0.tgz#cbb639d9002eed9c6b5975eb20598d7936f1f9f2"
 
-tape@4.9.0:
+tape@4.9.0, tape@^4.5.1:
   version "4.9.0"
   resolved "https://registry.yarnpkg.com/tape/-/tape-4.9.0.tgz#855c08360395133709d34d3fbf9ef341eb73ca6a"
   dependencies:

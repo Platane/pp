@@ -32,9 +32,21 @@
   },
   "scripts": {
     "start": "node -e \"require('./lib').create()\"",
+
     "start:dev": "nodemon start.js",
+
     "build:test": "rm -rf lib && NODE_ENV=test babel --out-dir ./lib ./src",
+
     "resetdb":
-      "node -e \"require('babel-register');require('./src/__tests__/bootstrap').run()\""
+      "node -e \"require('babel-register');require('./src/__tests__/bootstrap').run()\"",
+
+    "build":
+      "rm -rf lib && NODE_ENV=production babel --out-dir ./lib --ignore __tests__ ./src",
+
+    "deploy:alias":
+      "now alias `now ls pitchperfect-api | grep -m 1 -e pitchperfect-api- | cut -f 2 -d ' ' ` pitchperfect-api",
+
+    "deploy":
+      "now -e ENV=production -e GC_JSON_KEY_FILE=@pitchperfect_gc_json_key_file_secret -e PORT=80 --public && npm run deploy:alias"
   }
 }

@@ -17,7 +17,7 @@ const untilNoLog = p =>
     p.stdout.on('data', data => {
       console.log(data.toString())
       clearTimeout(killTimeout)
-      killTimeout = setTimeout(resolve, 5000)
+      killTimeout = setTimeout(resolve, 3000)
     })
 
     p.stderr.on('data', data => reject(data.toString()))
@@ -40,8 +40,9 @@ const run = async () => {
   console.log('spawning')
 
   const env = {
-    STORE_ORIGIN: 'localhost:9988',
+    API_ORIGIN: 'http://localhost:9988',
     ENV: 'test',
+    API_ORIGIN2: 'http://localhost:9988',
   }
 
   const servers = [['api', 9988]].map(args => spawnServer(...args, env))

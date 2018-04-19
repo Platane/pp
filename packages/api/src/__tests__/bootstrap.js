@@ -101,7 +101,9 @@ const questions = [
   },
 ].map((x, id) => ({
   ...x,
-  id: id + 1,
+  id: (id * 7 + 31251238 + id * id * 34 + id * id * id * 5)
+    .toString(36)
+    .slice(-4),
 }))
 
 const sessions = [
@@ -147,6 +149,11 @@ const getAll = datastore => async entityName => {
   return results
 }
 
+const split = n => arr =>
+  Array.from({ length: Math.ceil(arr.length / n) }).map((_, i) =>
+    arr.slice(i * n, (i + 1) * n)
+  )
+
 export const run = async () => {
   const datastore = await createDB()
 
@@ -158,7 +165,11 @@ export const run = async () => {
     ))
   )
 
-  await datastore.delete(entities.map(x => x[datastore.KEY]))
+  await Promise.all(
+    split(500)(entities.map(x => x[datastore.KEY])).map(keys =>
+      datastore.delete(keys)
+    )
+  )
 
   console.log('---questions')
 

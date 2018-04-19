@@ -19,14 +19,15 @@ module.exports = {
     filename: production ? '[name]-[hash:8].js' : '[name].js',
     // publicPath: '/',
     publicPath:
-      `https://storage.googleapis.com/${process.env.BUCKET || 'bucket'}/` || '/',
+      `https://storage.googleapis.com/${process.env.BUCKET || 'bucket'}/` ||
+      '/',
   },
 
   resolve: {
     alias: {
       'react-redux': 'preact-redux',
-      react: 'preact',
-      'react-dom': 'preact',
+      react: 'preact-compat',
+      'react-dom': 'preact-compat',
     },
   },
 

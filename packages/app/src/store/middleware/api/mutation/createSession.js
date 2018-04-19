@@ -5,7 +5,7 @@ import { normalize } from '~/service/normalize'
 
 export const actionType = 'mutation:session:create'
 
-export const exec = async (store, action) => {
+export const exec = (store, action) => {
   const query = `
     mutation a($sessionId: ID!) {
       createSession(sessionId: $sessionId) {

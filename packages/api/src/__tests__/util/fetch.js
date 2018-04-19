@@ -1,5 +1,5 @@
 import fetch from 'node-fetch'
-import { STORE_ORIGIN } from '~/config'
+const { API_ORIGIN } = process.env
 
 const safeJSONparse = s => {
   try {
@@ -10,7 +10,7 @@ const safeJSONparse = s => {
 }
 
 export default (path, { body, headers = {}, token, ...params } = {}) =>
-  fetch(`http://${STORE_ORIGIN}${path}`, {
+  fetch(`${API_ORIGIN}${path}`, {
     ...params,
 
     headers: {

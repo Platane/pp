@@ -2,11 +2,13 @@ import { createRouteResolver } from 'declarative-router'
 import { routes } from './routes'
 import { getSession } from '~/service/normalize'
 import { selectCurrentSession } from '~/store/selector/currentSession'
-export { reduce } from 'declarative-router'
+import { reduce as reduce_ } from 'declarative-router'
 
 const resolveRoute = createRouteResolver(routes)
 
 export const defaultState = { key: null, param: {}, path: null }
+
+export const reduce = reduce_(routes)
 
 export const reduceGlobal = (state, action) => {
   // if (!state.router.key)
