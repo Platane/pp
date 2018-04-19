@@ -8,15 +8,13 @@ import { create } from './store/index'
 import { init as initUi } from '~/sideEffect/ui'
 import { init as initResourceFetcher } from '~/sideEffect/resourceFetcher'
 import { init as initTimeout } from '~/sideEffect/timeout'
-// export {
-//   initSideEffect as initRouter,
-// } from 'declarative-router/lib/redux/sideEffect'
-// export { createNavigator } from 'declarative-router/lib/navigator/dom'
+import {
+  createDomNavigator,
+  initSideEffect as initRouter,
+} from 'declarative-router'
+import * as u from 'declarative-router'
 
-const dr = {
-  ...require('../../../../declarative-router/src/redux'),
-  ...require('../../../../declarative-router/src/navigator/dom'),
-}
+console.log(u)
 
 // init raven
 if (SENTRY_DSN) {
@@ -29,7 +27,7 @@ if (SENTRY_DSN) {
 
 // init store
 const sideEffects = [
-  dr.initSideEffect({ navigator: dr.createNavigator() }),
+  initRouter({ navigator: createDomNavigator() }),
   initResourceFetcher,
   initTimeout,
   initUi,

@@ -1,26 +1,19 @@
 {
-  "name": "watwet",
-  "description": "Amazing app",
+  "name": "pitchperfect",
+  "description": "Know what you don't",
   "version": "0.1.0",
   "dependencies": {
-    "apollo-cache-inmemory": "^1.1.12",
-    "apollo-client": "^2.2.8",
-    "apollo-link-context": "^1.0.8",
-    "apollo-link-http": "^1.5.4",
+    "declarative-router": "0.1.1",
     "emotion": "9.1.1",
-    "lodash.deburr": "4.1.0",
-    "lodash.kebabcase": "4.1.1",
     "preact": "8.2.7",
     "preact-compat": "3.18.0",
     "preact-emotion": "9.1.1",
     "preact-redux": "2.0.3",
-    "preact-router": "^2.6.0",
+    "preact-router": "2.6.0",
     "prop-types": "15.6.1",
     "raven-js": "3.24.1",
-    "react-propstransition": "^2.0.6",
-    "react-simplest-typeahead": "1.1.0",
+    "react-propstransition": "2.0.6",
     "redux": "3.7.2",
-    "supports-webp": "1.0.5",
     "unfetch": "3.0.0"
   },
   "devDependencies": {
@@ -32,20 +25,17 @@
     "babel-plugin-module-resolver": "3.1.1",
     "babel-plugin-transform-class-properties": "6.24.1",
     "babel-plugin-transform-es2015-modules-commonjs": "6.26.0",
-    "babel-plugin-transform-inline-environment-variables": "0.4.0",
     "babel-plugin-transform-object-rest-spread": "6.26.0",
     "babel-plugin-transform-react-jsx": "6.24.1",
-    "babel-plugin-transform-runtime": "6.23.0",
     "babel-preset-env": "1.6.1",
     "babel-preset-flow": "6.23.0",
     "babel-preset-minify": "0.4.0",
-    "babili-webpack-plugin": "0.1.2",
     "file-loader": "1.1.11",
     "flow-bin": "0.69.0",
     "jest": "22.4.3",
     "prettier": "1.12.0",
-    "tap-spec": "^4.1.1",
-    "tape": "^4.9.0",
+    "tap-spec": "4.1.1",
+    "tape": "4.9.0",
     "webpack": "4.5.0",
     "webpack-assets-manifest": "3.0.1",
     "webpack-cli": "2.0.14",
@@ -57,15 +47,11 @@
   "scripts": {
     "start":
       "webpack-dev-server --mode development --config ./script/webpack.config.js",
-
     "test:browser":
       "NODE_ENV=test webpack-dev-server --port 3001 --mode development --config ./script/webpack.config.test.js",
-
     "build:test": "rm -rf lib && NODE_ENV=test babel --out-dir ./lib ./src",
-
     "test:dev":
       "NODE_ENV=test node -e \"require('babel-register');global.fetch=require('node-fetch');require('./src/__tests__/index.js')\" | tap-spec",
-
     "build":
       "rm -rf dist && mkdir dist && NODE_ENV=production babel --out-file ./dist/sw.js ./src/service/serviceWorker/sw.js && NODE_ENV=production webpack --config ./script/webpack.config.js --mode production && node ./script/rewriteFileName.js && node ./script/buildManifest.js"
   }
