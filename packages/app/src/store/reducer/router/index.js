@@ -1,15 +1,10 @@
-const dr = require('../../../../../../../declarative-router/src/redux')
-const {
-  createRouteResolver,
-} = require('../../../../../../../declarative-router/src/routeResolver')
-
+import { createRouteResolver } from 'declarative-router'
 import { routes } from './routes'
 import { getSession } from '~/service/normalize'
 import { selectCurrentSession } from '~/store/selector/currentSession'
+export { reduce } from 'declarative-router'
 
 const resolveRoute = createRouteResolver(routes)
-
-export const reduce = dr.reduce(routes)
 
 export const defaultState = { key: null, param: {}, path: null }
 
