@@ -17,7 +17,9 @@ module.exports = {
   output: {
     path: path.join(__dirname, '../dist'),
     filename: production ? '[name]-[hash:8].js' : '[name].js',
-    publicPath: '/',
+    // publicPath: '/',
+    publicPath:
+      `https://storage.googleapis.com/${process.env.BUCKET || 'bucket'}/` || '/',
   },
 
   resolve: {
@@ -55,9 +57,7 @@ module.exports = {
         test: [/\.bmp/, /\.gif/, /\.jpe?g/, /\.png/, /\.otf/, /\.svg/],
         loader: 'file-loader',
         options: {
-          name: production
-            ? 'static/[hash:8].[ext]'
-            : 'static/[name].[hash:8].[ext]',
+          name: production ? '[hash:8].[ext]' : '[name].[hash:8].[ext]',
         },
       },
     ],

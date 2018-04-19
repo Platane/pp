@@ -2,21 +2,21 @@ const fs = require('fs')
 const path = require('path')
 
 const assetManifest = require('../dist/assetManifest.json')
+const { publicPath } = require('../dist/stats.json')
 
 const pathIndex = assetManifest['index.js']
 const pathSw = 'sw.js'
 
 const newPathSw = 'sw.js'
 
-const basename = '/'
 
 const replaceFileName = s =>
   s
-    .replace('/index.html', basename + 'index.html')
-    .replace('/manifest.json', basename + 'manifest.json')
-    .replace('/index.js', basename + pathIndex)
-    .replace('/sw.js', basename + newPathSw)
-    .replace('__root', basename)
+    .replace('/index.html', publicPath + 'index.html')
+    .replace('/manifest.json', publicPath + 'manifest.json')
+    .replace('/index.js', publicPath + pathIndex)
+    .replace('/sw.js', publicPath + newPathSw)
+    .replace('__root', publicPath)
 
 // replace filename in index.html
 {

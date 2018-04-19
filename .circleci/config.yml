@@ -81,7 +81,7 @@ jobs:
             # gsutil mb -c STANDARD -l EUROPE-WEST1 -p $GC_PROJECT gs://$BUCKET || echo 1
 
             # sync the folder dist with the bucket ( options -d is for removing from the bucket )
-            gsutil -m rsync -r -d dist gs://$BUCKET
+            gsutil -m rsync -r dist gs://$BUCKET
 
             # use gzip with this files
             gsutil -m cp -r -z html,css,js,xml,txt,json,map,svg dist/* gs://$BUCKET

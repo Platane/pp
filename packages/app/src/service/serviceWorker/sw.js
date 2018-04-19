@@ -9,15 +9,7 @@ const assets = [
   '/index.js',
 ]
 
-const hostname = process.env.HOST || 'localhost'
-
 const assetCacheKey = assets.join('-').replace(/\//g, '')
-
-const staticCacheKey = 'static'
-
-const imageCacheKey = 'image'
-
-const dataCacheKey = 'data'
 
 self.addEventListener('install', event => {
   event.waitUntil(

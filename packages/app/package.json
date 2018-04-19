@@ -54,6 +54,6 @@
     "test:dev":
       "NODE_ENV=test node -e \"require('babel-register');global.fetch=require('node-fetch');require('./src/__tests__/index.js')\" | tap-spec",
     "build":
-      "rm -rf dist && mkdir dist && NODE_ENV=production babel --out-file ./dist/sw.js ./src/service/serviceWorker/sw.js && NODE_ENV=production webpack --config ./script/webpack.config.js --mode development --json > dist/stats.json && node ./script/rewriteFileName.js && node ./script/buildManifest.js"
+      "rm -rf dist && mkdir dist && NODE_ENV=production babel --out-file ./dist/sw.js ./src/service/serviceWorker/sw.js && NODE_ENV=production webpack --config ./script/webpack.config.js --mode production --json > dist/stats.json && node ./script/rewriteFileName.js && node ./script/buildManifest.js"
   }
 }
