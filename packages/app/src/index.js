@@ -8,6 +8,7 @@ import { create } from './store/index'
 import { init as initUi } from '~/sideEffect/ui'
 import { init as initResourceFetcher } from '~/sideEffect/resourceFetcher'
 import { init as initServiceWorker } from '~/sideEffect/serviceWorker'
+import { init as initLocalStorage } from '~/sideEffect/localStorage'
 import { init as initTimeout } from '~/sideEffect/timeout'
 import {
   createDomNavigator,
@@ -29,6 +30,7 @@ const sideEffects = [
   initRouter({ navigator: createDomNavigator() }),
   initResourceFetcher,
   initServiceWorker,
+  initLocalStorage,
   initTimeout,
   initUi,
 ]

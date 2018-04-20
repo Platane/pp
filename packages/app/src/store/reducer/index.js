@@ -6,6 +6,10 @@ import {
   defaultState as resourceDefaultState,
 } from './resource'
 import {
+  reduce as identity,
+  defaultState as identityDefaultState,
+} from './identity'
+import {
   reduce as router,
   defaultState as routerDefaultState,
   reduceGlobal as routerGlobal,
@@ -20,8 +24,9 @@ export const reduce = timeoutEnhance(
   chainReducer(
     combineReducers({
       resource,
-      router,
+      identity,
       timeout,
+      router,
     }),
     routerGlobal,
     resourceGlobal
@@ -30,6 +35,7 @@ export const reduce = timeoutEnhance(
 
 export const defaultState = {
   resource: resourceDefaultState,
-  router: routerDefaultState,
+  identity: identityDefaultState,
   timeout: timeoutDefaultState,
+  router: routerDefaultState,
 }

@@ -17,10 +17,9 @@ module.exports = {
   output: {
     path: path.join(__dirname, '../dist'),
     filename: production ? '[name]-[hash:8].js' : '[name].js',
-    // publicPath: '/',
-    publicPath:
-      `https://storage.googleapis.com/${process.env.BUCKET || 'bucket'}/` ||
-      '/',
+    publicPath: process.env.BUCKET
+      ? `https://storage.googleapis.com/${process.env.BUCKET || 'bucket'}/`
+      : '/',
   },
 
   resolve: {
