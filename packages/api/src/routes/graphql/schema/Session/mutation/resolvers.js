@@ -83,7 +83,7 @@ export const setAnswer = async (
   { sessionId, lineId, answer },
   { datastore }
 ) => {
-  const line = await findById(datastore, ['session', sessionId, 'line'])([
+  const [line] = await findById(datastore, ['session', sessionId, 'line'])([
     lineId,
   ])
 
@@ -97,6 +97,7 @@ export const setAnswer = async (
   await datastore.save({
     key: datastore.key(['session', sessionId, 'line', lineId]),
     data: {
+      index: line.index,
       date_answered,
       answer,
     },

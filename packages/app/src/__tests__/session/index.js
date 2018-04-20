@@ -11,6 +11,7 @@ import { createSession, setAnswer } from '~/store/action/mutation'
 import { goTo } from 'declarative-router/lib/redux/action'
 
 let sessionId
+let session_created
 test('create session', async t => {
   const store = create([initResourceFetcher])
 
@@ -29,6 +30,7 @@ test('create session', async t => {
 
   t.assert(session.lines.length, 'session should have lines')
 
+  session_created = session
   sessionId = session.id
 
   t.end()
@@ -51,6 +53,18 @@ test('retrieve session', async t => {
   t.assert(session, 'session should be fetched')
 
   t.assert(session.lines.length, 'session should have lines')
+
+  t.deepEqual(
+    session.lines.map(x => x.question.id),
+    session_created.lines.map(x => x.question.id),
+    'should have the same line order as created'
+  )
+
+  t.deepEqual(
+    session,
+    session_created,
+    'should have the exact same session as created'
+  )
 
   t.end()
 })
@@ -89,6 +103,32 @@ test('answer question', async t => {
     ).answer,
     'should still have line answered'
   )
+
+  // anser more for next test
+
+  for (let i = 5; i--; ) {
+    store.dispatch(
+      setAnswer(sessionId, selectCurrentLineId(store.getState()), true)
+    )
+    await waitFor(store, ({ resource }) => !resource.pendingMutations.length)
+  }
+
+  t.end()
+})
+
+test('retrieve question answered', async t => {
+  const store = create([initResourceFetcher])
+  store.dispatch(goTo(`/session/${sessionId}`))
+
+  const session = await waitFor(store, selectCurrentSession)
+
+  t.deepEqual(
+    session.lines.map(x => x.question.id),
+    session_created.lines.map(x => x.question.id),
+    'should have the same line order as created'
+  )
+
+  t.assert(session.lines[0], 'should have the first line answered')
 
   t.end()
 })

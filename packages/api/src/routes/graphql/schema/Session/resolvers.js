@@ -17,7 +17,7 @@ export const lines = async ({ id }, _, { datastore }) => {
       ...x,
       question: questions.find(u => u.id == x.id),
     }))
-    .sort((a, b) => (a.index < b.index ? 1 : -1))
+    .sort((a, b) => (a.index > b.index ? 1 : -1))
     .filter(x => x.question)
 }
 

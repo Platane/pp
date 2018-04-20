@@ -24,7 +24,7 @@ export const withUser = handler => (o, args, ctx) => {
   //   throw new Error('401')
   // }
 
-  ctx.user = { userId }
+  ctx.user = { id: userId }
 
   return handler(o, args, ctx)
 }
