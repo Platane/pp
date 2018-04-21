@@ -94,7 +94,7 @@ export const setAnswer = async (
 
   const date_answered = Date.now()
 
-  await datastore.save({
+  await datastore.update({
     key: datastore.key(['session', sessionId, 'line', lineId]),
     data: {
       index: line.index,

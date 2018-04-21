@@ -5,6 +5,7 @@ type User {
   id: ID!
   
   sessions: [Session]!
+  
 }
 
 `

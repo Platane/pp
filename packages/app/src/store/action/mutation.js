@@ -5,6 +5,11 @@ export const createSession = () => ({
   sessionId: genUid(),
 })
 
+export const subscribeToNewsletter = email => ({
+  type: 'mutation:user:subscribeToNewsletter',
+  email,
+})
+
 export const setAnswer = (sessionId, lineId, answer) => ({
   type: 'mutation:answer:set',
   sessionId,

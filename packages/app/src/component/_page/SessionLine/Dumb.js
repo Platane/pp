@@ -48,6 +48,7 @@ const QuestionLabel = styled.h1`
   margin: 64px 0;
   text-align: center;
   font-size: 2em;
+  min-height: 3.5em;
 `
 
 const Container = styled.div`

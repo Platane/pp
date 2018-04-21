@@ -3,6 +3,7 @@ import styled from 'preact-emotion'
 import { black, vibrant, white } from '~/component/_abstract/palette'
 import { Link } from '~/component/Link'
 import { Button } from '~/component/Button'
+import { SubscriptionFooter } from '~/component/SubscriptionFooter'
 import { categories, category_label } from '~/constant'
 
 const CategoryColumn = ({ title, answer, session, color }) => (
@@ -25,7 +26,7 @@ const CategoryColumn = ({ title, answer, session, color }) => (
   </Column>
 )
 
-export const SessionResult = ({ session, startNewSession }) =>
+export const SessionResult = ({ session, router, startNewSession }) =>
   session ? (
     <Container>
       <Center>
@@ -61,6 +62,8 @@ export const SessionResult = ({ session, startNewSession }) =>
           </Button>
         </ButtonBar>
       </Center>
+
+      <SubscriptionFooter router={router} />
     </Container>
   ) : (
     <span>...</span>
@@ -80,6 +83,13 @@ const Center = styled.div`
   background-color: ${white};
   border-radius: 32px;
   padding: 64px;
+
+  @media (max-width: 600px) {
+    border-radius: 0;
+    padding: 64px;
+    width: 100%;
+    margin: 0;
+  }
 `
 const Row = styled.div`
   display: flex;

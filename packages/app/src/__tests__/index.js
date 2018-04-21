@@ -3,6 +3,7 @@ global.btoa = x => new Buffer(x).toString('base64')
 global.atob = x => new Buffer(x, 'base64').toString('ascii')
 
 import './session'
+import './subscription'
 
 import test from 'tape'
 

@@ -6,6 +6,7 @@ import { createSession } from '~/store/action/mutation'
 const injectState = connect(
   state => ({
     session: selectCurrentSession(state),
+    router: state.router,
   }),
   { startNewSession: createSession }
 )

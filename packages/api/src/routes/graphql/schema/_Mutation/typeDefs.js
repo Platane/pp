@@ -1,4 +1,8 @@
-const u = [require('../Session/mutation/typeDefs')]
+const u = [
+  //
+  require('../User/mutation/typeDefs'),
+  require('../Session/mutation/typeDefs'),
+]
 
 export const typeDefs = `
   ${u.map(({ typeDefs }) => typeDefs).join('\n\n')}

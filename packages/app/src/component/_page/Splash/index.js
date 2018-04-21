@@ -37,6 +37,10 @@ const Title = styled.h1`
   font-size: 5em;
   text-align: center;
   color: ${white};
+  
+  @media ( max-width: 400px ){
+    font-size: 4em;
+  }
 `
 const Subtitle = styled.h2`
   font-size: 2em;

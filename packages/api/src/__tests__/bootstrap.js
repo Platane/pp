@@ -161,7 +161,7 @@ export const run = async () => {
 
   const entities = [].concat(
     ...(await Promise.all(
-      ['question', 'session', 'line'].map(getAll(datastore))
+      ['question', 'session', 'line', 'user'].map(getAll(datastore))
     ))
   )
 
