@@ -59,7 +59,9 @@ jobs:
           command: |
             yarn install
       
-      - run:  __tests__/run.sh
+      - run:
+          name: test
+          command: __tests__/run.sh
       
       - run: 
           working_directory: packages/api

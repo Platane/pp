@@ -42,7 +42,6 @@ const run = async () => {
   const env = {
     API_ORIGIN: 'http://localhost:9988',
     ENV: 'test',
-    API_ORIGIN2: 'http://localhost:9988',
   }
 
   const servers = [['api', 9988]].map(args => spawnServer(...args, env))
@@ -63,7 +62,10 @@ const run = async () => {
 
 run()
   .catch(err => {
-    console.log(err)
-    process.exit(1)
+    console.log('failed', err)
+
+    return new Promise(r => setTimeout(r, 1000))
+
+    // process.exit(1)
   })
   .then(() => process.exit(0))

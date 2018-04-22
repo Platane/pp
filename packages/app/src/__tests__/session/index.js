@@ -105,13 +105,22 @@ test('answer question', async t => {
   )
 
   // anser more for next test
-
-  for (let i = 5; i--; ) {
-    store.dispatch(
-      setAnswer(sessionId, selectCurrentLineId(store.getState()), true)
-    )
-    await waitFor(store, ({ resource }) => !resource.pendingMutations.length)
-  }
+  store.dispatch(
+    setAnswer(sessionId, selectCurrentLineId(store.getState()), true)
+  )
+  store.dispatch(
+    setAnswer(sessionId, selectCurrentLineId(store.getState()), true)
+  )
+  store.dispatch(
+    setAnswer(sessionId, selectCurrentLineId(store.getState()), true)
+  )
+  store.dispatch(
+    setAnswer(sessionId, selectCurrentLineId(store.getState()), true)
+  )
+  store.dispatch(
+    setAnswer(sessionId, selectCurrentLineId(store.getState()), true)
+  )
+  await waitFor(store, ({ resource }) => !resource.pendingMutations.length)
 
   t.end()
 })
