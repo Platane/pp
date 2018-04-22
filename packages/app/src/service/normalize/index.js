@@ -52,6 +52,7 @@ export const normalize = ({ session }) =>
   Object.assign(
     ...[
       //
+      {},
       session && normalizeSession(session),
     ].filter(Boolean)
   )

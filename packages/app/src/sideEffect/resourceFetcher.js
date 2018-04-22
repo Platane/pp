@@ -4,18 +4,18 @@ import { API_ORIGIN } from '~/config'
 
 const fetchSession = sessionId => {
   const query = `{
-  session(id:"${sessionId}"){
-    id 
-    lines {
-      question {
-        id
-        text
-        category
+    session(id:"${sessionId}"){
+      id 
+      lines {
+        question {
+          id
+          text
+          category
+        }
+        answer
       }
-      answer
     }
-  }
-}`
+  }`
 
   return fetch(`${API_ORIGIN}/graphql`, {
     method: 'POST',

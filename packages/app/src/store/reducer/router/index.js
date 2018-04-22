@@ -6,20 +6,11 @@ import { reduce as reduce_ } from 'declarative-router'
 
 const resolveRoute = createRouteResolver(routes)
 
-export const defaultState = { key: null, param: {}, path: null }
+export const defaultState = resolveRoute('')
 
 export const reduce = reduce_(routes)
 
 export const reduceGlobal = (state, action) => {
-  // if (!state.router.key)
-  //   return {
-  //     ...state,
-  //     router: {
-  //       ...state.router,
-  //       ...resolveRoute(`/${state.auth.id}`),
-  //     },
-  //   }
-
   if (
     action.type === 'mutation:success' &&
     action.action.type === 'mutation:session:create'
