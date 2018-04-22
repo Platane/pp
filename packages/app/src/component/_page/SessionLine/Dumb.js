@@ -1,47 +1,49 @@
 import { h, Component } from 'preact'
 import styled from 'preact-emotion'
-import { white } from '~/component/_abstract/palette'
+import { white, transitionUnit } from '~/component/_abstract/palette'
 import { Link } from '~/component/Link'
 import { Button } from '~/component/Button'
 import { Timer } from '~/component/Timer'
+import { Spinner } from '~/component/Spinner'
+import { Transition } from 'react-propstransition'
+import { IndirectTransition } from 'react-propstransition'
+import { ButtonBar } from './ButtonBar'
 
-export const SessionLine = ({
-  setAnswer,
-  question,
-  sessionId,
-  lineId,
-  startDate,
-  duration,
-}) =>
-  question ? (
-    <Container>
-      <Center>
-        <Timer startDate={startDate} duration={duration} />
+const equal = (a, b) => a.lineId === b.lineId
 
-        <Separator />
+export const SessionLine = props => (
+  <IndirectTransition
+    delay={transitionUnit * 1.2}
+    toTransition={props}
+    equal={equal}
+  >
+    {({ next, previous, transition }) =>
+      !(next || previous).question ? (
+        <Spinner />
+      ) : (
+        <Container>
+          <Center>
+            <Timer {...(next || previous).timeout} />
 
-        <QuestionLabel>{question.text}</QuestionLabel>
+            <Separator />
 
-        <ButtonBar>
-          <Button onClick={() => setAnswer(sessionId, lineId, true)}>
-            I've got this
-          </Button>
+            <QuestionLabel visible={next}>
+              {(next || previous).question.text}
+            </QuestionLabel>
 
-          <Separator />
-
-          <Button
-            onClick={() => setAnswer(sessionId, lineId, false)}
-            outline
-            color={white}
-          >
-            not sure
-          </Button>
-        </ButtonBar>
-      </Center>
-    </Container>
-  ) : (
-    <span>...</span>
-  )
+            <ButtonBar
+              {...next || previous}
+              fadeOut={previous}
+              fadeIn={next}
+              transition={transition}
+              previousAnswer={props.previousAnswer}
+            />
+          </Center>
+        </Container>
+      )
+    }
+  </IndirectTransition>
+)
 
 const QuestionLabel = styled.h1`
   color: ${white};
@@ -49,6 +51,9 @@ const QuestionLabel = styled.h1`
   text-align: center;
   font-size: 2em;
   min-height: 3.5em;
+
+  transition: opacity ${transitionUnit}ms ease;
+  opacity: ${props => (props.visible ? 1 : 0)};
 `
 
 const Container = styled.div`
@@ -63,15 +68,7 @@ const Center = styled.div`
   max-width: 800px;
   margin: 64px auto;
 `
-const ButtonBar = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
 
-  @media (max-width: 600px) {
-    flex-direction: column;
-  }
-`
 const Separator = styled.div`
   width: 64px;
   height: 64px;

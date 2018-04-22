@@ -1,8 +1,14 @@
 import { h, Component } from 'preact'
-import styled from 'preact-emotion'
-import { black, vibrant, white } from '~/component/_abstract/palette'
+import styled, { keyframes } from 'preact-emotion'
+import {
+  black,
+  vibrant,
+  white,
+  transitionUnit,
+} from '~/component/_abstract/palette'
 import { Link } from '~/component/Link'
 import { Button } from '~/component/Button'
+import { Spinner } from '~/component/Spinner'
 import { SubscriptionFooter } from '~/component/SubscriptionFooter'
 import { categories, category_label } from '~/constant'
 
@@ -66,8 +72,13 @@ export const SessionResult = ({ session, router, startNewSession }) =>
       <SubscriptionFooter router={router} />
     </Container>
   ) : (
-    <span>...</span>
+    <Spinner />
   )
+
+const appear = keyframes`
+  0%{ opacity: 0; transform: translateY(300px) scale(0.8,0.5)}
+  100%{ opacity: 1; transform: scale(1,1)}
+`
 
 const Container = styled.div`
   display: flex;
@@ -83,6 +94,8 @@ const Center = styled.div`
   background-color: ${white};
   border-radius: 32px;
   padding: 64px;
+
+  animation: ${appear} ${transitionUnit}ms ease;
 
   @media (max-width: 600px) {
     border-radius: 0;
