@@ -6,6 +6,7 @@ import { SessionLine } from '~/component/_page/SessionLine'
 import { SessionResult } from '~/component/_page/SessionResult'
 import { Instruction } from '~/component/_page/Instruction'
 import { Wallpaper } from '~/component/Wallpaper'
+import { PopupZone } from '~/component/PopupZone'
 
 export const Content = ({ router }) => {
   switch (router.key) {
@@ -32,6 +33,7 @@ export const App = props => (
     <ContentWrap>
       <Content {...props} />
     </ContentWrap>
+    <PopupZone {...props} />
   </Container>
 )
 
