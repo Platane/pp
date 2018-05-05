@@ -3,13 +3,13 @@ set -e
 
 cd ./packages/api
 ENV=test yarn resetdb
-yarn build:test
+yarn build:test --quiet
 
 cd ../app
-yarn build:test
+yarn build:test --quiet
 
 cd ../ssr
-yarn build:test
+yarn build:test --quiet
 
 cd ../../
 

@@ -2,6 +2,8 @@
   "name": "pitchperfect-app",
   "description": "Know what you don't",
   "version": "0.1.0",
+  "private": true,
+  "engines": { "node": "9.9" },
   "dependencies": {
     "declarative-router": "0.1.3",
     "emotion": "9.1.2",

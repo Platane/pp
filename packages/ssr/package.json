@@ -2,6 +2,7 @@
   "name": "pitchperfect-ssr",
   "version": "0.1.0",
   "private": true,
+  "engines": { "node": "9.9" },
   "dependencies": {
     "emotion": "9.1.2",
     "emotion-server": "9.1.2",
@@ -26,6 +27,7 @@
     "babel-plugin-module-resolver": "3.1.1",
     "babel-plugin-transform-assets": "1.0.1",
     "babel-plugin-transform-class-properties": "6.24.1",
+    "babel-plugin-transform-inline-environment-variables": "0.4.1",
     "babel-plugin-transform-object-rest-spread": "6.26.0",
     "babel-plugin-transform-react-jsx": "6.24.1",
     "babel-preset-env": "1.6.1",

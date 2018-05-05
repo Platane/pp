@@ -22,8 +22,7 @@ const App = require('app/component/App').App
 const goToAction = require('app/store/action/router').goTo
 const selectFetchingPending = require('app/store/selector/pending')
   .selectFetchingPending
-const selectMeta = require('app/store/selector/head/meta')
-  .selectMeta
+const selectMeta = require('app/store/selector/head/meta').selectMeta
 const stringifyMeta = require('app/service/head').stringify
 
 export const render = async (pathname: string, query: Object) => {
@@ -35,7 +34,7 @@ export const render = async (pathname: string, query: Object) => {
 
   // await for resource fetching to end
   await waitFor(store, s => !selectFetchingPending(s))
-  
+
   // render
   const app = (
     <Provider store={store}>
@@ -44,9 +43,9 @@ export const render = async (pathname: string, query: Object) => {
   )
 
   const { html, ids, css } = extractCritical(preactRender(app))
-  
+
   const meta = stringifyMeta(selectMeta(store.getState()))
-  
+
   const state = JSON.stringify(store.getState()).replace(/</g, '\\u003c')
 
   const indexhtml = `

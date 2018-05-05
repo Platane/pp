@@ -6,7 +6,7 @@ references:
     /home/circleci/project
 
   node_image: &node_image
-    circleci/node:8.9
+    circleci/node:9.9
 
   attach_workspace: &attach_workspace
     attach_workspace:
@@ -51,30 +51,49 @@ jobs:
     steps:
       - checkout
       - run: 
+          name: install api
           working_directory: packages/api
           command: |
             yarn install
       - run: 
+          name: install app
           working_directory: packages/app
           command: |
             yarn install
+            
+      - run: 
+          name: install ssr
+          working_directory: packages/ssr
+          command: |
+            yarn install
+      
+      - run: 
+          name: build app
+          working_directory: packages/app
+          command: |
+            yarn build
       
       - run:
           name: test
           command: __tests__/run.sh
       
       - run: 
+          name: build api
           working_directory: packages/api
           command: |
             yarn build
+    
       - run: 
-          working_directory: packages/app
+          name: build ssr
+          working_directory: packages/ssr
           command: |
             yarn build
       
       - persist_to_workspace:
           root: *workspace_root
           paths:
+            - packages/ssr/lib
+            - packages/ssr/packages.json
             - packages/api/lib
             - packages/api/packages.json
             - packages/app/dist

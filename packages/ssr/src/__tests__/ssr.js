@@ -6,5 +6,19 @@ test('render homepage', async t => {
 
   t.pass('request ok')
 
+  t.assert(res.includes('<body>'), 'result should contains body')
+
+  t.end()
+})
+
+test('render session', async t => {
+  const res = await fetch('/session/aaaa')
+
+  t.pass('request ok')
+
+  t.assert(res.includes('<body>'), 'result should contains body')
+
+  t.assert(res.includes("I've got this"), 'result should session')
+
   t.end()
 })

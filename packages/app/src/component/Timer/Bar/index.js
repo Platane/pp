@@ -17,7 +17,11 @@ export class Bar extends Component {
     )
   }
 
+  componentDidMount() {}
+
   afterRender = () => {
+    if (!this.base) return
+
     const x = (Date.now() - this.props.startDate) / this.props.duration
 
     if (x > 1) return
