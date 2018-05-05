@@ -9,7 +9,6 @@
     "preact-compat": "3.18.0",
     "preact-emotion": "9.1.2",
     "preact-redux": "2.0.3",
-    "preact-router": "2.6.0",
     "prop-types": "15.6.1",
     "raven-js": "3.24.2",
     "react-propstransition": "2.0.6",

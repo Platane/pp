@@ -8,6 +8,9 @@ yarn build:test
 cd ../app
 yarn build:test
 
+cd ../ssr
+yarn build:test
+
 cd ../../
 
 

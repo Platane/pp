@@ -72,7 +72,7 @@ module.exports = {
   devtool: production ? 'source-map' : false,
 
   devServer: {
-    port: 8082,
+    port: 8083,
     historyApiFallback: true,
     watchOptions: {
       ignored: /node_modules/,

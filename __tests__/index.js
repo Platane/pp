@@ -41,10 +41,15 @@ const run = async () => {
 
   const env = {
     API_ORIGIN: 'http://localhost:9988',
+    SSR_ORIGIN: 'http://localhost:9986',
     ENV: 'test',
   }
 
-  const servers = [['api', 9988]].map(args => spawnServer(...args, env))
+  const servers = [
+    //
+    ['api', 9988],
+    ['ssr', 9986],
+  ].map(args => spawnServer(...args, env))
 
   console.log('spawned')
 

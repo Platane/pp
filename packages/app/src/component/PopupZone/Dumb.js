@@ -7,12 +7,15 @@ import {
   borderRadius,
   transitionUnit,
 } from '~/component/_abstract/palette'
+import { SubscribeToNewsletter } from '~/component/_popup/SubscribeToNewsletter'
 
 export const PopupZone = ({ active }) => (
   <IndirectTransition toTransition={active} delay={transitionUnit}>
     {({ next, previous, transition }) =>
       next || previous ? (
-        <Container>{active === 'subscribe' && 'subscribe'}</Container>
+        <Container>
+          {(active === 'subscribe' && <SubscribeToNewsletter />) || null}
+        </Container>
       ) : null
     }
   </IndirectTransition>

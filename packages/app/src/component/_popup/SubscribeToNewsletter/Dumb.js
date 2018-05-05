@@ -1,6 +1,6 @@
 import { h, Component } from 'preact'
 import styled from 'preact-emotion'
-import { white, transitionUnit } from '~/component/_abstract/palette'
+import { vibrant, white, transitionUnit } from '~/component/_abstract/palette'
 import { Link } from '~/component/Link'
 import { Button } from '~/component/Button'
 import { Timer } from '~/component/Timer'

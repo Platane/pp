@@ -25,7 +25,10 @@ export const create = (sideEffects = []) => {
       window.__REDUX_DEVTOOLS_EXTENSION__(),
   ].filter(Boolean)
 
-  const store = createStore(reduce, defaultState, compose(...enhancers))
+  const initialState =
+    ('undefined' != typeof window && window.__PRELOADED_STATE__) || defaultState
+
+  const store = createStore(reduce, initialState, compose(...enhancers))
 
   sideEffects.forEach(init => init(store))
 

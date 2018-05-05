@@ -1,0 +1,38 @@
+{
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "~": "./src",
+          "app": "../app/lib"
+        }
+      }
+    ],
+    [
+      "transform-assets",
+      {
+        "extensions": ["jpg", "jpeg", "png", "gif"],
+        "name": "[hash:8].[ext]"
+      }
+    ],
+    "transform-es2015-modules-commonjs",
+    "transform-class-properties",
+    "transform-object-rest-spread",
+    "emotion",
+    ["transform-react-jsx", { "pragma": "h" }]
+  ],
+  "presets": ["flow"],
+  "env": {
+    "production": {
+      "plugins": [
+        [
+          "transform-inline-environment-variables",
+          {
+            "include": ["NODE_ENV", "VERSION", "API_ORIGIN", "SENTRY_DSN"]
+          }
+        ]
+      ]
+    }
+  }
+}

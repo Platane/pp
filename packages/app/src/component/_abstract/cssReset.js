@@ -39,7 +39,8 @@ export const injectReset = () => {
 
 export const withCssReset = C =>
   class WithCssReset extends Component {
-    componentDidMount() {
+    constructor() {
+      super()
       injectReset()
     }
 
