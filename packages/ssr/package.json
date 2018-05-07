@@ -6,9 +6,9 @@
     "node": "9.9"
   },
   "dependencies": {
-    "emotion": "9.1.2",
-    "emotion-server": "9.1.2",
-    "koa": "2.5.0",
+    "emotion": "9.1.3",
+    "emotion-server": "9.1.3",
+    "koa": "2.5.1",
     "koa-bodyparser": "4.2.0",
     "koa-router": "7.4.0",
     "koa2-cors": "2.0.5",
@@ -17,14 +17,14 @@
     "node-fetch": "2.1.2",
     "preact": "8.2.9",
     "preact-compat": "3.18.0",
-    "preact-emotion": "9.1.2",
+    "preact-emotion": "9.1.3",
     "preact-redux": "2.0.3",
     "preact-render-to-string": "3.7.0",
     "redux": "4.0.0"
   },
   "devDependencies": {
     "babel-cli": "6.26.0",
-    "babel-core": "6.26.0",
+    "babel-core": "6.26.3",
     "babel-plugin-emotion": "9.1.2",
     "babel-plugin-flow-runtime": "0.17.0",
     "babel-plugin-module-resolver": "3.1.1",
@@ -36,10 +36,10 @@
     "babel-preset-env": "1.6.1",
     "babel-preset-flow": "6.23.0",
     "babel-register": "6.26.0",
-    "flow-bin": "0.69.0",
+    "flow-bin": "0.71.0",
     "flow-runtime": "0.17.0",
-    "nodemon": "1.17.3",
-    "prettier": "1.11.1",
+    "nodemon": "1.17.4",
+    "prettier": "1.12.1",
     "tap-spec": "4.1.1",
     "tape": "4.9.0"
   },
@@ -47,13 +47,9 @@
     "start": "node -e \"require('./lib').create()\"",
     "start:dev": "nodemon start.js",
     "build:test": "rm -rf lib && NODE_ENV=test babel --out-dir ./lib ./src",
-    "build:staticPage":
-      "rm -rf dist && mkdir dist && node ./script/buildStaticPage.js",
-    "build":
-      "rm -rf lib && NODE_ENV=production babel --out-dir ./lib --ignore __tests__ ./src",
-    "deploy:alias":
-      "now alias `now ls pitchperfect-ssr | grep -m 1 -e pitchperfect-ssr- | cut -f 2 -d ' ' ` pitchperfect-ssr",
-    "deploy":
-      "now -e ENV=production -e PORT=80 --public && npm run deploy:alias"
+    "build:staticPage": "rm -rf dist && mkdir dist && node ./script/buildStaticPage.js",
+    "build": "rm -rf lib && NODE_ENV=production babel --out-dir ./lib --ignore __tests__ ./src",
+    "deploy:alias": "now alias `now ls pitchperfect-ssr | grep -m 1 -e pitchperfect-ssr- | cut -f 2 -d ' ' ` pitchperfect-ssr",
+    "deploy": "now -e ENV=production -e PORT=80 --public && npm run deploy:alias"
   }
 }
