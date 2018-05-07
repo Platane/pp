@@ -1,4 +1,4 @@
-import styled, { css } from 'preact-emotion'
+import styled, { css, keyframes } from 'preact-emotion'
 import { h } from 'preact'
 import { IndirectTransition } from 'react-propstransition'
 import {
@@ -21,6 +21,11 @@ export const PopupZone = ({ active }) => (
   </IndirectTransition>
 )
 
+const fadeIn = keyframes`
+  0% { background-color: rgba(0, 0, 0, 0); }
+  100% { background-color: rgba(0, 0, 0, 0.4); }
+`
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -31,6 +36,10 @@ const Container = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
+
+  background-color: rgba(0, 0, 0, 0.4);
+
+  animation: ${fadeIn} ${transitionUnit}ms ease;
 `
 const Center = styled.div`
   width: calc(100% - 64px);

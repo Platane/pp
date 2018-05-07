@@ -17,20 +17,20 @@ export const selectMeta = createSelector(
   (router, session, sessionStats) => {
     const url = APP_ORIGIN + router.path
 
-    if (session) {
+    if (session && sessionStats.answered > 0) {
       const score = Math.floor(sessionStats.known / sessionStats.answered)
 
       return {
-        title: 'session',
-        description: `you are ${score}% pitch perfect !`,
+        title: 'Pitch Perfect',
+        description: `You are ${score}% pitch perfect!`,
         image: formatImage(`score/${score}`),
         url,
       }
     }
 
     return {
-      title: 'hello',
-      description: 'xxx',
+      title: 'Pitch Perfect',
+      description: "Know what you don't. Boost your pitch skills.",
       image: formatImage('home'),
       url,
     }

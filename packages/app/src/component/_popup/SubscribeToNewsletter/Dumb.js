@@ -9,23 +9,33 @@ import { PopupContainer } from '~/component/PopupContainer'
 import { Transition } from 'react-propstransition'
 import { IndirectTransition } from 'react-propstransition'
 
-export const SubscribeToNewsletter = props => (
-  <PopupContainer close={props.close}>
-    <ButtonBar>
-      <Button onClick={props.close} color={vibrant[1]}>
-        keep playing
-      </Button>
+const createSubmitHandler = subscribeToNewsletter => e => {
+  e.preventDefault()
+
+  const mail = e.currentTarget.elements[0].value
+
+  subscribeToNewsletter(mail)
+}
+
+export const SubscribeToNewsletter = ({ subscribeToNewsletter, close }) => (
+  <PopupContainer close={close}>
+    <form onSubmit={createSubmitHandler(subscribeToNewsletter)}>
+      <Input id="mail-form" type="mail" />
 
       <Separator />
 
-      <Button
-        onClick={() => setAnswer(sessionId, lineId, false)}
-        outline
-        color={white}
-      >
-        send me stuff
-      </Button>
-    </ButtonBar>
+      <ButtonBar>
+        <Button onClick={close} color={vibrant[1]}>
+          keep playing
+        </Button>
+
+        <Separator />
+
+        <Button type="submit" outline color={vibrant[1]}>
+          send me stuff
+        </Button>
+      </ButtonBar>
+    </form>
   </PopupContainer>
 )
 
@@ -41,4 +51,8 @@ const ButtonBar = styled.div`
 const Separator = styled.div`
   width: 64px;
   height: 64px;
+`
+const Input = styled.input`
+  height: 64px;
+  width: 100%;
 `
