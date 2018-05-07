@@ -55,6 +55,7 @@ jobs:
           working_directory: packages/api
           command: |
             yarn install
+            
       - run: 
           name: install app
           working_directory: packages/app
@@ -64,6 +65,12 @@ jobs:
       - run: 
           name: install ssr
           working_directory: packages/ssr
+          command: |
+            yarn install
+    
+      - run: 
+          name: install image renderer
+          working_directory: packages/image-renderer
           command: |
             yarn install
       
@@ -94,6 +101,15 @@ jobs:
           working_directory: packages/ssr
           command: |
             yarn build:staticPage
+            mv dist/* ../app/dist/
+            
+      - run: 
+          name: render image
+          working_directory: packages/image-renderer
+          command: |
+            yarn render:all
+            mv dist/* ../app/dist/
+            
       
       - persist_to_workspace:
           root: *workspace_root

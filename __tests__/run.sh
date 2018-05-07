@@ -11,6 +11,9 @@ yarn build:test --quiet
 cd ../ssr
 yarn build:test --quiet
 
+cd ../image-renderer
+yarn build:test --quiet
+
 cd ../../
 
 

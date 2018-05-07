@@ -15,7 +15,6 @@
     "node-fetch": "2.1.2",
     "preact": "8.2.9",
     "preact-compat": "3.18.0",
-    "preact-redux": "2.0.3",
     "preact-render-to-string": "3.7.0",
     "redux": "4.0.0"
   },
@@ -45,14 +44,13 @@
     "start": "node -e \"require('./lib').create()\"",
     "start:dev": "nodemon start.js",
     "build:test": "rm -rf lib && NODE_ENV=test babel --out-dir ./lib ./src",
-    "resetdb":
-      "node -e \"require('babel-register');require('./src/__tests__/bootstrap').run()\"",
-    "build:staticPage": "node ./script/buildStaticPage.js",
+    "build:staticPage":
+      "rm -rf dist && mkdir dist && node ./script/buildStaticPage.js",
     "build":
       "rm -rf lib && NODE_ENV=production babel --out-dir ./lib --ignore __tests__ ./src",
     "deploy:alias":
-      "now alias `now ls pitchperfect-api | grep -m 1 -e pitchperfect-api- | cut -f 2 -d ' ' ` pitchperfect-api",
+      "now alias `now ls pitchperfect-ssr | grep -m 1 -e pitchperfect-ssr- | cut -f 2 -d ' ' ` pitchperfect-ssr",
     "deploy":
-      "now -e ENV=production -e GC_JSON_KEY_FILE=@pitchperfect_gc_json_key_file_secret -e PORT=80 --public && npm run deploy:alias"
+      "now -e ENV=production -e PORT=80 --public && npm run deploy:alias"
   }
 }

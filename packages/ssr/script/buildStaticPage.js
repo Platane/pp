@@ -9,7 +9,7 @@ const render = require('../lib/service/render').render
   'instruction',
 ].map(async pathname =>
   fs.writeFileSync(
-    path.resolve(__dirname, '../../app/dist/', pathname),
+    path.resolve(__dirname, '../dist/', pathname),
     await render(pathname)
   )
 )
