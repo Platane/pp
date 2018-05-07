@@ -12,7 +12,7 @@ cd ../ssr
 yarn build:test --quiet
 
 cd ../image-renderer
-yarn build:test --quiet
+yarn build:test
 
 cd ../../
 

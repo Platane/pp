@@ -2,7 +2,9 @@
   "name": "pitchperfect-ssr",
   "version": "0.1.0",
   "private": true,
-  "engines": { "node": "9.9" },
+  "engines": {
+    "node": "9.9"
+  },
   "dependencies": {
     "emotion": "9.1.2",
     "emotion-server": "9.1.2",
@@ -15,6 +17,8 @@
     "node-fetch": "2.1.2",
     "preact": "8.2.9",
     "preact-compat": "3.18.0",
+    "preact-emotion": "9.1.2",
+    "preact-redux": "2.0.3",
     "preact-render-to-string": "3.7.0",
     "redux": "4.0.0"
   },
@@ -35,7 +39,6 @@
     "flow-bin": "0.69.0",
     "flow-runtime": "0.17.0",
     "nodemon": "1.17.3",
-    "preact-emotion": "9.1.2",
     "prettier": "1.11.1",
     "tap-spec": "4.1.1",
     "tape": "4.9.0"
