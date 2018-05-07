@@ -8,13 +8,16 @@ import {
   transitionUnit,
 } from '~/component/_abstract/palette'
 import { SubscribeToNewsletter } from '~/component/_popup/SubscribeToNewsletter'
+import { SubmitQuestion } from '~/component/_popup/SubmitQuestion'
 
 export const PopupZone = ({ active }) => (
   <IndirectTransition toTransition={active} delay={transitionUnit}>
     {({ next, previous, transition }) =>
       next || previous ? (
         <Container>
-          {(active === 'subscribe' && <SubscribeToNewsletter />) || null}
+          {(active === 'subscribe' && <SubscribeToNewsletter />) ||
+            (active === 'submitquestion' && <SubmitQuestion />) ||
+            null}
         </Container>
       ) : null
     }

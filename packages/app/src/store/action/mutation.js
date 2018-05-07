@@ -10,6 +10,11 @@ export const subscribeToNewsletter = email => ({
   email,
 })
 
+export const submitQuestion = question => ({
+  type: 'mutation:user:submitQuestion',
+  question,
+})
+
 export const setAnswer = (sessionId, lineId, answer) => ({
   type: 'mutation:answer:set',
   sessionId,

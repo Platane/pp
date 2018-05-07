@@ -1,52 +1,42 @@
 import { h, Component } from 'preact'
 import styled from 'preact-emotion'
 import { vibrant, white, transitionUnit } from '~/component/_abstract/palette'
-import { Link } from '~/component/Link'
 import { Button } from '~/component/Button'
 import { PopupContainer } from '~/component/PopupContainer'
 
-const createSubmitHandler = subscribeToNewsletter => e => {
+const createSubmitHandler = submitQuestion => e => {
   e.preventDefault()
 
   const mail = e.currentTarget.elements[0].value
 
-  subscribeToNewsletter(mail)
+  submitQuestion(mail)
 }
 
-export const SubscribeToNewsletter = ({
-  path,
-  subscribeToNewsletter,
-  close,
-}) => (
+export const SubmitQuestion = ({ path, submitQuestion, close }) => (
   <PopupContainer close={close}>
-    <Title>Get the full list of questions straight to your inbox</Title>
+    <Title>Got a question as tough as a VC's?</Title>
+
+    <Subtitle>Let us know what you think they're going to ask!</Subtitle>
 
     <Separator />
 
-    <form onSubmit={createSubmitHandler(subscribeToNewsletter)}>
-      <Input type="mail" placeholder="founder@startup.com" />
+    <form onSubmit={createSubmitHandler(submitQuestion)}>
+      <Input type="text" placeholder="Who's got equity besides investors?" />
 
       <Separator />
 
       <ButtonBar>
-        <Button onClick={close} color={vibrant[1]}>
-          keep playing
+        <Button type="submit" color={vibrant[1]}>
+          Submit question
         </Button>
 
         <Separator />
 
-        <Button type="submit" outline color={vibrant[1]}>
-          send me stuff
+        <Button onClick={close} color={vibrant[1]}>
+          take me back
         </Button>
       </ButtonBar>
     </form>
-
-    <Link href={path} query={{ submitquestion: true }}>
-      <A>
-        Think you know what the VC's are going to aks ?<br />
-        Sugget a question to us!
-      </A>
-    </Link>
   </PopupContainer>
 )
 
@@ -68,7 +58,7 @@ const Title = styled.h1`
   text-align: center;
 `
 
-const A = styled.a`
+const Subtitle = styled.h2`
   text-align: center;
 `
 
