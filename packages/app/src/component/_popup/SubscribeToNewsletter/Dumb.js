@@ -3,7 +3,14 @@ import styled from 'preact-emotion'
 import { vibrant, white, transitionUnit } from '~/component/_abstract/palette'
 import { Link } from '~/component/Link'
 import { Button } from '~/component/Button'
-import { PopupContainer } from '~/component/PopupContainer'
+import {
+  PopupContainer,
+  ButtonBar,
+  A,
+  Title,
+  Input,
+} from '~/component/PopupContainer'
+import { Separator } from '~/component/Separator'
 
 const createSubmitHandler = subscribeToNewsletter => e => {
   e.preventDefault()
@@ -49,33 +56,3 @@ export const SubscribeToNewsletter = ({
     </Link>
   </PopupContainer>
 )
-
-const ButtonBar = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
-  @media (max-width: 600px) {
-    flex-direction: column;
-  }
-`
-const Separator = styled.div`
-  width: 64px;
-  height: 64px;
-`
-
-const Title = styled.h1`
-  text-align: center;
-`
-
-const A = styled.a`
-  text-align: center;
-`
-
-const Input = styled.input`
-  height: 64px;
-  width: 100%;
-  padding: 16px 32px;
-  text-align: center;
-  font-size: 1.4em;
-`

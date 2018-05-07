@@ -29,3 +29,37 @@ const CloseButton = styled.div`
   top: 8px;
   right: 8px;
 `
+
+export const ButtonBar = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+`
+export const Separator = styled.div`
+  width: 64px;
+  height: 64px;
+`
+
+export const Title = styled.h1`
+  text-align: center;
+`
+
+export const Subtitle = styled.h2`
+  text-align: center;
+`
+
+export const A = styled.a`
+  text-align: center;
+`
+
+export const Input = styled.input`
+  height: 64px;
+  width: 100%;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 1.4em;
+`

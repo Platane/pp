@@ -8,6 +8,7 @@ import { Spinner } from '~/component/Spinner'
 import { Transition } from 'react-propstransition'
 import { IndirectTransition } from 'react-propstransition'
 import { ButtonBar } from './ButtonBar'
+import { SubscriptionFooter } from '~/component/SubscriptionFooter'
 
 const equal = (a, b) => a.lineId === b.lineId
 
@@ -39,6 +40,8 @@ export const SessionLine = props => (
               previousAnswer={props.previousAnswer}
             />
           </Center>
+
+          <SubscriptionFooter />
         </Container>
       )
     }

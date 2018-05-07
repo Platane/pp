@@ -9,6 +9,8 @@ import {
 } from '~/component/_abstract/palette'
 import { SubscribeToNewsletter } from '~/component/_popup/SubscribeToNewsletter'
 import { SubmitQuestion } from '~/component/_popup/SubmitQuestion'
+import { Result } from '~/component/_popup/Result'
+import { Break } from '~/component/_popup/Break'
 
 export const PopupZone = ({ active }) => (
   <IndirectTransition toTransition={active} delay={transitionUnit}>
@@ -17,6 +19,8 @@ export const PopupZone = ({ active }) => (
         <Container>
           {(active === 'subscribe' && <SubscribeToNewsletter />) ||
             (active === 'submitquestion' && <SubmitQuestion />) ||
+            (active === 'break' && <Break />) ||
+            (active === 'result' && <Result />) ||
             null}
         </Container>
       ) : null

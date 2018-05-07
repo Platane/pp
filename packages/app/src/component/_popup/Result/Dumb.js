@@ -20,28 +20,31 @@ const createSubmitHandler = submitQuestion => e => {
   submitQuestion(mail)
 }
 
-export const SubmitQuestion = ({ path, submitQuestion, close }) => (
+export const Result = ({ path, submitQuestion, close }) => (
   <PopupContainer close={close}>
-    <Title>Got a question as tough as a VC's?</Title>
+    <Title>{`You're ${45}% Pitch Perfect`}</Title>
 
-    <Subtitle>Let us know what you think they're going to ask!</Subtitle>
+    <Subtitle>Not bad! You're nearly ready to pitch the VC</Subtitle>
 
     <Separator />
 
     <form onSubmit={createSubmitHandler(submitQuestion)}>
-      <Input type="text" placeholder="Who's got equity besides investors?" />
+      <Input
+        type="mail"
+        placeholder="enter your email address for full results"
+      />
 
       <Separator />
 
       <ButtonBar>
         <Button type="submit" color={vibrant[1]}>
-          Submit question
+          Send my results
         </Button>
 
         <Separator />
 
-        <Button onClick={close} color={vibrant[1]}>
-          take me back
+        <Button onClick={startOver} color={vibrant[1]}>
+          Start over
         </Button>
       </ButtonBar>
     </form>

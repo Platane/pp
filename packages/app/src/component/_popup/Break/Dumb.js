@@ -20,30 +20,31 @@ const createSubmitHandler = submitQuestion => e => {
   submitQuestion(mail)
 }
 
-export const SubmitQuestion = ({ path, submitQuestion, close }) => (
+export const Break = ({ path, sessionId, close }) => (
   <PopupContainer close={close}>
-    <Title>Got a question as tough as a VC's?</Title>
-
-    <Subtitle>Let us know what you think they're going to ask!</Subtitle>
+    <Title>Do you want to keep praticing your pitch?</Title>
 
     <Separator />
 
-    <form onSubmit={createSubmitHandler(submitQuestion)}>
-      <Input type="text" placeholder="Who's got equity besides investors?" />
+    <ButtonBar>
+      <Button onClick={close} color={vibrant[1]}>
+        Yes, bring it on
+      </Button>
 
       <Separator />
 
-      <ButtonBar>
-        <Button type="submit" color={vibrant[1]}>
-          Submit question
-        </Button>
+      <Link href={`/session/${sessionId}/result`}>
+        <Button color={vibrant[1]}>Noi, show results</Button>
+      </Link>
+    </ButtonBar>
 
-        <Separator />
+    <Separator />
 
-        <Button onClick={close} color={vibrant[1]}>
-          take me back
-        </Button>
-      </ButtonBar>
-    </form>
+    <Link href={path} query={{ submitquestion: true }}>
+      <A>
+        Think you know what the VC's are going to aks ?<br />
+        Sugget a question to us!
+      </A>
+    </Link>
   </PopupContainer>
 )

@@ -6,6 +6,8 @@ const injectState = connect(({ router }) => ({
   active:
     (router.query.subscribe && 'subscribe') ||
     (router.query.submitquestion && 'submitquestion') ||
+    (router.query.break && 'break') ||
+    (router.query.result && 'result') ||
     null,
 }))
 
