@@ -46,7 +46,10 @@ export const render = async (pathname: string, query: Object) => {
 
   const meta = stringifyMeta(selectMeta(store.getState()))
 
-  const state = JSON.stringify(store.getState()).replace(/</g, '\\u003c')
+  const state = store.getState()
+
+  // remove user
+  state.identity.user = null
 
   const indexhtml = `
 <!doctype html>
@@ -61,7 +64,7 @@ ${meta}
 <div id="app">${html}</div>
 </body>
 <script>
- window.__PRELOADED_STATE__=${state};
+ window.__PRELOADED_STATE__=${JSON.stringify(state).replace(/</g, '\\u003c')};
  window.__EMOTION_IDS__=${JSON.stringify(ids)};
 </script>
 <script async src="/${assetManifest['index.js']}"></script>

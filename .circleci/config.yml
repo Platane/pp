@@ -89,6 +89,12 @@ jobs:
           command: |
             yarn build
       
+      - run: 
+          name: build static pages
+          working_directory: packages/ssr
+          command: |
+            yarn build:staticPage
+      
       - persist_to_workspace:
           root: *workspace_root
           paths:

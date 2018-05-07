@@ -47,6 +47,7 @@
     "build:test": "rm -rf lib && NODE_ENV=test babel --out-dir ./lib ./src",
     "resetdb":
       "node -e \"require('babel-register');require('./src/__tests__/bootstrap').run()\"",
+    "build:staticPage": "node ./script/buildStaticPage.js",
     "build":
       "rm -rf lib && NODE_ENV=production babel --out-dir ./lib --ignore __tests__ ./src",
     "deploy:alias":
