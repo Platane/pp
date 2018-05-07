@@ -10,6 +10,7 @@ import { init as initResourceFetcher } from '~/sideEffect/resourceFetcher'
 import { init as initServiceWorker } from '~/sideEffect/serviceWorker'
 import { init as initLocalStorage } from '~/sideEffect/localStorage'
 import { init as initTimeout } from '~/sideEffect/timeout'
+import { init as initMetaHead } from '~/sideEffect/metaHead'
 import {
   createDomNavigator,
   initSideEffect as initRouter,
@@ -31,6 +32,7 @@ const sideEffects = [
   initResourceFetcher,
   initServiceWorker,
   initLocalStorage,
+  initMetaHead,
   initTimeout,
   initUi,
 ]

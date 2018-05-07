@@ -12,5 +12,15 @@ export const selectCurrentSession = createSelector(
 
 export const selectCurrentSessionFinished = createSelector(
   selectCurrentSession,
-  session => session && session.lines.every(x => typeof x.answer == 'boolean')
+  session => session && session.lines.every(x => typeof x.answer === 'boolean')
+)
+
+export const selectCurrentSessionStats = createSelector(
+  selectCurrentSession,
+  session =>
+    session && {
+      answered: session.lines.filter(x => typeof x.answer === 'boolean').length,
+      known: session.lines.filter(x => x.answer).length,
+      total: session.lines.length,
+    }
 )

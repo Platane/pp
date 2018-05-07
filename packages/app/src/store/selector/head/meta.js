@@ -1,12 +1,38 @@
 import { createSelector } from 'reselect'
 import { APP_ORIGIN } from '~/config'
+import {
+  selectCurrentSessionStats,
+  selectCurrentSession,
+} from '../currentSession'
 
 const selectRouter = x => x.router
 const selectRouterKey = createSelector(selectRouter, x => x.key)
 
-export const selectMeta = createSelector(selectRouter, (router) => ({
-  title: 'hello',
-  description: 'xxx',
-  image: 'xxx.jpg',
-  url: APP_ORIGIN+router.path
-}))
+const formatImage = key => btoa(key) + '.jpg'
+
+export const selectMeta = createSelector(
+  selectRouter,
+  selectCurrentSession,
+  selectCurrentSessionStats,
+  (router, session, sessionStats) => {
+    const url = APP_ORIGIN + router.path
+
+    if (session) {
+      const score = Math.floor(sessionStats.known / sessionStats.answered)
+
+      return {
+        title: 'session',
+        description: `you are ${score}% pitch perfect !`,
+        image: formatImage(`score/${score}`),
+        url,
+      }
+    }
+
+    return {
+      title: 'hello',
+      description: 'xxx',
+      image: formatImage('home'),
+      url,
+    }
+  }
+)
