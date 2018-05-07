@@ -1,6 +1,8 @@
 const fs = require('fs')
 const path = require('path')
 const render = require('../src')
+const cpuCount = require('os').cpus().length
+
 
 const encodeBase64 = x => new Buffer(x).toString('base64')
 
@@ -43,4 +45,5 @@ const jobs = keys.map((key, i, arr) => () =>
   )
 )
 
-parallelize(8)(jobs)
+// parallelize does not work well on CI machine
+parallelize(1)(jobs)

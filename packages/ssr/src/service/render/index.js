@@ -10,8 +10,11 @@ import fetch from 'node-fetch'
 
 const assetManifest = require('app/../dist/assetManifest.json')
 
+// monkey patch node env
 global.fetch = fetch
+global.btoa = x => new Buffer(x).toString('base64')
 
+// alias react to preact
 const moduleAlias = require('module-alias')
 moduleAlias.addAlias('react', 'preact-compat')
 moduleAlias.addAlias('react-redux', 'preact-redux')
