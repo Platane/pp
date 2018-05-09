@@ -18,6 +18,8 @@ export const init = store => {
     if (lastStartDate != startDate) {
       clearTimeout(killTimeout)
 
+      lastStartDate = startDate
+
       if (!startDate) return
 
       const delta = startDate + state.timeout.duration - Date.now()

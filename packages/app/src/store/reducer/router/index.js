@@ -3,12 +3,20 @@ import { routes } from './routes'
 import { getSession } from '~/service/normalize'
 import { selectCurrentSession } from '~/store/selector/currentSession'
 import { reduce as reduce_ } from 'declarative-router'
+import { chainReducer } from '~/util/reduxHelper'
 
 const resolveRoute = createRouteResolver(routes)
 
 export const defaultState = resolveRoute('')
 
-export const reduce = reduce_(routes)
+export const reduce = chainReducer(reduce_(routes), (state, action) => {
+  switch (action.type) {
+    case 'router:query:set':
+      return { ...state, query: action.query }
+    default:
+      return state
+  }
+})
 
 export const reduceGlobal = (state, action) => {
   if (

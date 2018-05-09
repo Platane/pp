@@ -4,11 +4,17 @@ import styled from 'preact-emotion'
 import { CountDown } from './CountDown'
 import { Bar } from './Bar'
 
-export const Timer = ({ startDate, duration, ...props }) => (
+// <Bar startDate={startDate} duration={duration} />
+
+export const Timer = ({ status, pausedAt, startDate, duration, ...props }) => (
   <Container>
-    <Bar startDate={startDate} duration={duration} />
     <TicPosition>
-      <CountDown startDate={startDate} duration={duration} />
+      <CountDown
+        startDate={startDate}
+        duration={duration}
+        running={status === 'running'}
+        pausedAt={pausedAt}
+      />
     </TicPosition>
   </Container>
 )

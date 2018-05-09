@@ -48,6 +48,8 @@ export const SubscribeToNewsletter = ({
       </ButtonBar>
     </form>
 
+    <Separator />
+
     <Link href={path} query={{ submitquestion: true }}>
       <A>
         Think you know what the VC's are going to aks ?<br />

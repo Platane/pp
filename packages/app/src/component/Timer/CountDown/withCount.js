@@ -7,15 +7,21 @@ export default C =>
     _update = () => this.forceUpdate()
 
     render() {
-      const delta = this.props.startDate + this.props.duration - Date.now()
+      const { startDate, running, pausedAt, duration, ...props } = this.props
+
+      let remaining = 0
 
       clearTimeout(this._killTimeout)
-      if (delta > 0) {
-        this._killTimeout = setTimeout(this._update, delta % 1000)
-      }
 
-      const secRemaining = Math.max(0, Math.ceil(delta / 1000))
+      if (running) {
+        const delta = startDate + duration - Date.now()
 
-      return <C {...this.props} secRemaining={secRemaining} />
+        if (delta > 0)
+          this._killTimeout = setTimeout(this._update, delta % 1000)
+
+        remaining = Math.max(0, delta)
+      } else remaining = duration - pausedAt
+
+      return <C {...props} secRemaining={Math.ceil(remaining / 1000)} />
     }
   }

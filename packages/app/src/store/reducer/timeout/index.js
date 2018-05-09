@@ -1,19 +1,63 @@
 import { selectCurrentLineId } from '~/store/selector/currentLine'
 import { set } from '~/util/reduxHelper'
 
-export const defaultState = { duration: 10000, startDate: null }
+const DURATION = 10000
+
+export const defaultState = {
+  duration: DURATION,
+  status: 'empty',
+}
+
+const getStatus = (state): 'empty' | 'paused' | 'running' => {
+  const lineId = selectCurrentLineId(state)
+
+  if (!lineId) return 'empty'
+
+  const q = state.router.query
+
+  const paused = q.subscribe || q.break || q.result
+
+  if (paused) return 'paused'
+
+  return 'running'
+}
 
 export const reduce = state => state || defaultState
 
 export const enhance = reduce => (state, action) => {
   const previousLineId = selectCurrentLineId(state)
+  const previousTimeout = state.timeout
 
   state = reduce(state, action)
 
   const nextLineId = selectCurrentLineId(state)
 
-  if (nextLineId != previousLineId)
-    state = set(state, ['timeout', 'startDate'], nextLineId && Date.now())
+  const status = getStatus(state)
+
+  // change
+  if (nextLineId != previousLineId || status != state.timeout.status) {
+    const nextTimeout = { status, duration: DURATION }
+
+    if (status === 'running') {
+      // another line, reset the timer
+      if (nextLineId != previousLineId) nextTimeout.startDate = Date.now()
+      // previous line was paused, un-pause it
+      else if (previousTimeout.status === 'paused')
+        nextTimeout.startDate = Date.now() - previousTimeout.pausedAt
+      // wtf should never happen
+      else nextTimeout.startDate = Date.now()
+    } else if (status === 'paused') {
+      if (previousTimeout.status === 'running')
+        nextTimeout.pausedAt = Date.now() - previousTimeout.startDate
+      // wtf should never happen
+      else nextTimeout.pausedAt = 0
+    }
+
+    state = {
+      ...state,
+      timeout: nextTimeout,
+    }
+  }
 
   return state
 }

@@ -10,7 +10,7 @@ import {
 export const PopupContainer = ({ close, children }) => (
   <Container>
     <CloseButton onClick={close}>x</CloseButton>
-    {children}
+    <Content>{children}</Content>
   </Container>
 )
 
@@ -22,6 +22,14 @@ const Container = styled.div`
   position: relative;
 
   min-height: 256px;
+
+  width: 80%;
+  max-width: 800px;
+`
+
+const Content = styled.div`
+  max-width: 480px;
+  margin: 0 auto;
 `
 
 const CloseButton = styled.div`
@@ -54,6 +62,7 @@ export const Subtitle = styled.h2`
 
 export const A = styled.a`
   text-align: center;
+  display: block;
 `
 
 export const Input = styled.input`
