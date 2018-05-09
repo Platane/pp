@@ -1,6 +1,7 @@
 import { h, Component } from 'preact'
 import styled from 'preact-emotion'
 import { vibrant, white, transitionUnit } from '~/component/_abstract/palette'
+import { Link } from '~/component/Link'
 import { Button } from '~/component/Button'
 import {
   PopupContainer,
@@ -20,7 +21,7 @@ const createSubmitHandler = submitQuestion => e => {
   submitQuestion(mail)
 }
 
-export const Break = ({ path, sessionId, close }) => (
+export const Break = ({ path, sessionId, showResult, close }) => (
   <PopupContainer close={close}>
     <Title>Do you want to keep praticing your pitch?</Title>
 
@@ -33,9 +34,9 @@ export const Break = ({ path, sessionId, close }) => (
 
       <Separator />
 
-      <Link href={`/session/${sessionId}/result`}>
-        <Button color={vibrant[1]}>Noi, show results</Button>
-      </Link>
+      <Button onClick={showResult} color={vibrant[1]}>
+        No, show results
+      </Button>
     </ButtonBar>
 
     <Separator />

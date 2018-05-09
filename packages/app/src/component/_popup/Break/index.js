@@ -10,6 +10,7 @@ const injectState = connect(
   }),
   {
     close: () => setQuery({}),
+    showResult: () => setQuery({ result: 1 }),
   }
 )
 

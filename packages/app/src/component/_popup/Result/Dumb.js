@@ -12,23 +12,29 @@ import {
 } from '~/component/PopupContainer'
 import { Separator } from '~/component/Separator'
 
-const createSubmitHandler = submitQuestion => e => {
+const createSubmitHandler = subscribeToNewsletter => e => {
   e.preventDefault()
 
   const mail = e.currentTarget.elements[0].value
 
-  submitQuestion(mail)
+  subscribeToNewsletter(mail)
 }
 
-export const Result = ({ path, submitQuestion, close }) => (
+export const Result = ({
+  isEnd,
+  score,
+  subscribeToNewsletter,
+  startOver,
+  close,
+}) => (
   <PopupContainer close={close}>
-    <Title>{`You're ${45}% Pitch Perfect`}</Title>
+    <Title>{`You're ${score}% Pitch Perfect`}</Title>
 
     <Subtitle>Not bad! You're nearly ready to pitch the VC</Subtitle>
 
     <Separator />
 
-    <form onSubmit={createSubmitHandler(submitQuestion)}>
+    <form onSubmit={createSubmitHandler(subscribeToNewsletter)}>
       <Input
         type="mail"
         placeholder="enter your email address for full results"
@@ -43,8 +49,8 @@ export const Result = ({ path, submitQuestion, close }) => (
 
         <Separator />
 
-        <Button onClick={startOver} color={vibrant[1]}>
-          Start over
+        <Button onClick={isEnd ? startOver : close} color={vibrant[1]}>
+          {isEnd ? 'Start over' : 'Continue'}
         </Button>
       </ButtonBar>
     </form>

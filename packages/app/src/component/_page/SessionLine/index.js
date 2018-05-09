@@ -10,8 +10,6 @@ const injectState = connect(
     const line = selectCurrentLine(state)
     const previous = selectPreviousLine(state)
 
-    console.log(state.timeout)
-
     return line
       ? {
           sessionId: selectCurrentSessionId(state),

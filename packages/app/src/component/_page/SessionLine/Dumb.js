@@ -13,11 +13,7 @@ import { SubscriptionFooter } from '~/component/SubscriptionFooter'
 const equal = (a, b) => a.lineId === b.lineId
 
 export const SessionLine = props => (
-  <IndirectTransition
-    delay={transitionUnit * 1.2}
-    toTransition={props}
-    equal={equal}
-  >
+  <IndirectTransition delay={transitionUnit} toTransition={props} equal={equal}>
     {({ next, previous, transition }) =>
       !(next || previous).question ? (
         <Spinner />

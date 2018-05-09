@@ -35,7 +35,7 @@ export const exec = (store, action) => {
 
 export const optimisticUpdate = (cache, action) => ({
   ...cache,
-  [`session.${action.sessionId}`]: { id: action.sessionId, liens: [] },
+  [`session.${action.sessionId}`]: { id: action.sessionId, lines: [] },
 })
 
 export const update = (cache, action, { data }) => ({

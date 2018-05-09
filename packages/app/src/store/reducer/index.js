@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 import { chainReducer } from '~/util/reduxHelper'
+import { compose } from '~/util/compose'
 import {
   reduce as resource,
   reduceGlobal as resourceGlobal,
@@ -13,6 +14,7 @@ import {
   reduce as router,
   defaultState as routerDefaultState,
   reduceGlobal as routerGlobal,
+  enhance as routerEnhance,
 } from './router'
 import {
   reduce as timeout,
@@ -20,7 +22,7 @@ import {
   enhance as timeoutEnhance,
 } from './timeout'
 
-export const reduce = timeoutEnhance(
+export const reduce = compose(timeoutEnhance, routerEnhance)(
   chainReducer(
     combineReducers({
       resource,
@@ -28,7 +30,6 @@ export const reduce = timeoutEnhance(
       timeout,
       router,
     }),
-    routerGlobal,
     resourceGlobal
   )
 )

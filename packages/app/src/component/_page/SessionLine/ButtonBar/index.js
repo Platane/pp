@@ -53,21 +53,22 @@ const Separator = styled.div`
 
 const fadeOut = keyframes`
   0%{ opacity: 1}
-  30%{ opacity: 0}
+  16%{ opacity: 0}
   100%{ opacity: 0}
 `
 
 const alternativeFadeOut = keyframes`
   0%{ opacity: 1; transform: scale(1,1)}
-  30%{ opacity: 1; transform: translateY(-30px) scale(1.25,1.25) rotate(3deg)}
-  90%{ opacity: 0; transform: translateY(110px) rotate(18deg)}
+  15%{ opacity: 1; transform: translateY(-30px) scale(1.25,1.25) rotate(3deg)}
+  44%{ opacity: 0; transform: translateY(110px) rotate(18deg)}
   100%{ opacity: 0}
 `
 
 const fadeIn = keyframes`
   0%{ opacity: 0; transform: scale(1,1)}
-  20%{ opacity: 0; transform: scale(0.9,0.8)}
-  60%{ opacity: 1; transform: scale(1.1,1.15)}
+  10%{ opacity: 0; transform: scale(0.9,0.8)}
+  30%{ opacity: 1; transform: scale(1.1,1.15)}
+  50%{ opacity: 1; transform: scale(1,1)}
   100%{ opacity: 1; transform: scale(1,1)}
 `
 
@@ -77,5 +78,5 @@ const Button = styled(Button_)`
       (props.fadeOut && props.selected && alternativeFadeOut) ||
       (props.fadeIn && fadeIn) ||
       null}
-    ${transitionUnit * 1.22}ms linear;
+    ${transitionUnit * 1.6}ms linear;
 `

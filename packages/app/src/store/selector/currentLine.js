@@ -9,3 +9,15 @@ export const selectCurrentLine = createSelector(
   (session, currentLineId) =>
     session && session.lines.find(x => x.question.id === currentLineId)
 )
+
+export const selectCurrentLineIndex = createSelector(
+  selectCurrentSession,
+  selectCurrentLineId,
+  (session, currentLineId) => {
+    if (!session) return null
+
+    const i = session.lines.findIndex(x => x.question.id === currentLineId)
+
+    return i === -1 ? null : i
+  }
+)

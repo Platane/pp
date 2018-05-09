@@ -3,13 +3,16 @@ import { h } from 'preact'
 import {
   vibrant,
   white,
+  black,
   borderRadius,
   transitionUnit,
 } from '~/component/_abstract/palette'
 
 export const PopupContainer = ({ close, children }) => (
   <Container>
-    <CloseButton onClick={close}>x</CloseButton>
+    <CloseButton onClick={close} href="#">
+      ×
+    </CloseButton>
     <Content>{children}</Content>
   </Container>
 )
@@ -32,10 +35,13 @@ const Content = styled.div`
   margin: 0 auto;
 `
 
-const CloseButton = styled.div`
+const CloseButton = styled.a`
   position: absolute;
   top: 8px;
   right: 8px;
+  text-decoration: none;
+  color: ${black};
+  padding: 4px;
 `
 
 export const ButtonBar = styled.div`
