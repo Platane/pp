@@ -8,7 +8,7 @@ import {
 const selectRouter = x => x.router
 const selectRouterKey = createSelector(selectRouter, x => x.key)
 
-const formatImage = key => btoa(key) + '.jpg'
+const formatImage = key => APP_ORIGIN + '/' + btoa(key) + '.jpg'
 
 export const selectMeta = createSelector(
   selectRouter,

@@ -4,10 +4,11 @@ import { PopupZone as Dumb } from './Dumb'
 
 const injectState = connect(({ router }) => ({
   active:
-    (router.query.subscribe && 'subscribe') ||
     (router.query.submitquestion && 'submitquestion') ||
-    (router.query.break && 'break') ||
+    (router.query.subscribeok && 'subscribeok') ||
+    (router.query.subscribe && 'subscribe') ||
     (router.query.result && 'result') ||
+    (router.query.break && 'break') ||
     null,
 }))
 

@@ -2,6 +2,7 @@ const u = [
   //
   require('../User/mutation/typeDefs'),
   require('../Session/mutation/typeDefs'),
+  require('../SubmitedQuestion/mutation/typeDefs'),
 ]
 
 export const typeDefs = `

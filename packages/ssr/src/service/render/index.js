@@ -9,6 +9,7 @@ import { waitFor } from '~/util/waitFor'
 import fetch from 'node-fetch'
 
 const assetManifest = require('app/../dist/assetManifest.json')
+const { publicPath } = require('app/../dist/stats.json')
 
 // monkey patch node env
 global.fetch = fetch
@@ -70,7 +71,7 @@ ${meta}
  window.__PRELOADED_STATE__=${JSON.stringify(state).replace(/</g, '\\u003c')};
  window.__EMOTION_IDS__=${JSON.stringify(ids)};
 </script>
-<script async src="/${assetManifest['index.js']}"></script>
+<script async src="${publicPath + assetManifest['index.js']}"></script>
 </html>`
 
   return indexhtml

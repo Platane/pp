@@ -5,10 +5,17 @@ import { Splash } from '~/component/_page/Splash'
 import { SessionLine } from '~/component/_page/SessionLine'
 import { SessionResult } from '~/component/_page/SessionResult'
 import { Instruction } from '~/component/_page/Instruction'
+import { Waiting } from '~/component/_page/Waiting'
 import { Wallpaper } from '~/component/Wallpaper'
 import { PopupZone } from '~/component/PopupZone'
 
-export const Content = ({ router }) => {
+export const Content = ({ router, session, creatingSession }) => {
+  if (
+    (['sessionLine', 'sessionResult'].includes(router.key) && !session) ||
+    creatingSession
+  )
+    return <Waiting />
+
   switch (router.key) {
     case 'home':
       return <Splash />

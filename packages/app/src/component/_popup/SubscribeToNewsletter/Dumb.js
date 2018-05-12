@@ -36,7 +36,7 @@ export const SubscribeToNewsletter = ({
       <Separator />
 
       <ButtonBar>
-        <Button onClick={close} color={vibrant[1]}>
+        <Button type="button" onClick={close} color={vibrant[1]}>
           keep playing
         </Button>
 

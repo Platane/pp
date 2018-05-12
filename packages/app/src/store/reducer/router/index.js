@@ -41,36 +41,46 @@ export const enhance = reduce => (state, action) => {
   ) {
     const session = getSession(state.resource.cache)(action.action.sessionId)
 
-    state = merge(
-      state,
-      ['router'],
-      resolveRoute(
+    state = set(state, ['router'], {
+      ...resolveRoute(
         `/session/${session.id}/step/${session.lines[0] &&
           session.lines[0].question.id}`
-      )
-    )
+      ),
+      hash: '',
+      query: {},
+    })
+  }
+
+  // change route on session creation start
+  if (
+    action.type === 'mutation:start' &&
+    action.action.type === 'mutation:session:create'
+  ) {
+    state = merge(state, ['router'], { query: {} })
   }
 
   // change route on email submission
   if (
     action.type === 'mutation:success' &&
-    action.action.type === 'mutation:user:subscribeToNewsletter' &&
-    state.router.query.result
+    action.action.type === 'mutation:user:subscribeToNewsletter'
   ) {
     const session = selectCurrentSession(state)
 
-    state = set(state, ['router'], {
-      ...resolveRoute(`/session/${session.id}/result`),
-      hash: '',
-      query: {},
-    })
+    if (state.router.query.result)
+      state = set(state, ['router'], {
+        ...resolveRoute(`/session/${session.id}/result`),
+        hash: '',
+        query: { subscribeok: 1 },
+      })
+    else state = set(state, ['router', 'query'], { subscribeok: 1 })
   }
 
   const lineChanged =
     selectCurrentLineId(state) !== selectCurrentLineId(previousState)
 
   const sessionChanged =
-    selectCurrentSession(state) !== selectCurrentSession(previousState)
+    (selectCurrentSession(state) || {}).id !==
+    (selectCurrentSession(previousState) || {}).id
 
   if (lineChanged || sessionChanged) {
     // goes to next empty line
@@ -105,56 +115,3 @@ export const enhance = reduce => (state, action) => {
 
   return state
 }
-//
-// export const reduceGlobal = (state, action) => {
-//   // change route on session creation
-//   if (
-//     action.type === 'mutation:success' &&
-//     action.action.type === 'mutation:session:create'
-//   ) {
-//     const session = getSession(state.resource.cache)(action.action.sessionId)
-//
-//     state = {
-//       ...state,
-//       router: {
-//         ...state.router,
-//         ...resolveRoute(
-//           `/session/${session.id}/step/${session.lines[0] &&
-//             session.lines[0].question.id}`
-//         ),
-//       },
-//     }
-//   }
-//
-//   // display break page
-//   const lineIndex = selectCurrentLineIndex(state)
-//   if (lineIndex && lineIndex % 10 === 0) {
-//   }
-//
-//   if (
-//     state.router.key == 'sessionLine' ||
-//     state.router.key == 'sessionResult'
-//   ) {
-//     const session = selectCurrentSession(state)
-//
-//     if (session) {
-//       const firstEmptyLine = session.lines.find(
-//         x => typeof x.answer != 'boolean'
-//       )
-//
-//       state = {
-//         ...state,
-//         router: {
-//           ...state.router,
-//           ...resolveRoute(
-//             firstEmptyLine
-//               ? `/session/${session.id}/step/${firstEmptyLine.question.id}`
-//               : `/session/${session.id}/result`
-//           ),
-//         },
-//       }
-//     }
-//   }
-//
-//   return state
-// }

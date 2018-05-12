@@ -32,48 +32,45 @@ const CategoryColumn = ({ title, answer, session, color }) => (
   </Column>
 )
 
-export const SessionResult = ({ session, router, startNewSession }) =>
-  session ? (
-    <Container>
-      <Center>
-        <Row>
-          <CategoryColumn
-            title="You know"
-            session={session}
-            answer={true}
-            color={vibrant[0]}
-          />
-
-          <Separator />
-
-          <CategoryColumn
-            title="You don't"
-            session={session}
-            answer={false}
-            color={vibrant[1]}
-          />
-        </Row>
+export const SessionResult = ({ session, startNewSession }) => (
+  <Container>
+    <Center>
+      <Row>
+        <CategoryColumn
+          title="You know"
+          session={session}
+          answer={true}
+          color={vibrant[0]}
+        />
 
         <Separator />
 
-        <ButtonBar>
-          <Button onClick={startNewSession} color={vibrant[1]}>
-            Start over
-          </Button>
+        <CategoryColumn
+          title="You don't"
+          session={session}
+          answer={false}
+          color={vibrant[1]}
+        />
+      </Row>
 
-          <Separator />
+      <Separator />
 
-          <Button outline color={vibrant[0]}>
-            share PitchPerfect
-          </Button>
-        </ButtonBar>
-      </Center>
+      <ButtonBar>
+        <Button onClick={startNewSession} color={vibrant[1]}>
+          Start over
+        </Button>
 
-      <SubscriptionFooter router={router} />
-    </Container>
-  ) : (
-    <Spinner />
-  )
+        <Separator />
+
+        <Button outline color={vibrant[0]}>
+          share PitchPerfect
+        </Button>
+      </ButtonBar>
+    </Center>
+
+    <SubscriptionFooter />
+  </Container>
+)
 
 const appear = keyframes`
   0%{ opacity: 0; transform: translateY(300px) scale(0.8,0.5)}

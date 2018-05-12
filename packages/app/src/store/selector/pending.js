@@ -7,3 +7,9 @@ export const selectFetchingPending = createSelector(
   selectCache,
   (toFetch, cache) => !toFetch.every(x => cache[x.key])
 )
+
+export const selectSessionCreationPending = createSelector(
+  x => x.resource.pendingMutations,
+  pendingMutations =>
+    pendingMutations.some(x => x.type === 'mutation:session:create')
+)

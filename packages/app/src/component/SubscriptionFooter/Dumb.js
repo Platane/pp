@@ -4,18 +4,19 @@ import { white } from '~/component/_abstract/palette'
 import { Link } from '~/component/Link'
 import { Mail } from '~/component/Icon/Mail'
 
-export const SubscriptionFooter = ({ path, ...props }) => (
-  <Container>
-    <Center>
-      <Link href={path} query={{ subscribe: true }}>
-        <A>
-          <MailIcon color={white} />
-          Get the complete checklist in your inbox
-        </A>
-      </Link>
-    </Center>
-  </Container>
-)
+export const SubscriptionFooter = ({ email_sent, path, ...props }) =>
+  !email_sent ? (
+    <Container>
+      <Center>
+        <Link href={path} query={{ subscribe: true }}>
+          <A>
+            <MailIcon color={white} />
+            Get the complete checklist in your inbox
+          </A>
+        </Link>
+      </Center>
+    </Container>
+  ) : null
 
 const Container = styled.footer`
   position: relative;

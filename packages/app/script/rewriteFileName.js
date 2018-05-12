@@ -9,7 +9,6 @@ const pathSw = 'sw.js'
 
 const newPathSw = 'sw.js'
 
-
 const replaceFileName = s =>
   s
     .replace('/index.html', publicPath + 'index.html')

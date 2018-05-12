@@ -2,10 +2,11 @@ import { h, Component } from 'preact'
 import styled from 'preact-emotion'
 import { variant, white } from '~/component/_abstract/palette'
 import { Link } from '~/component/Link'
+import { Waiting } from '~/component/_page/Waiting'
 
 export const Instruction = ({ creating, startNewSession }) =>
   creating ? (
-    <Container> ... </Container>
+    <Waiting />
   ) : (
     <Container>
       Instruction

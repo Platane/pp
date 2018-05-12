@@ -6,7 +6,7 @@ export const reduce = (state, action) => {
       return set(
         state,
         ['pendingMutations'],
-        [action.key, ...state.pendingMutations]
+        [{ key: action.key, ...action.action }, ...state.pendingMutations]
       )
 
     case 'mutation:success':
@@ -14,7 +14,7 @@ export const reduce = (state, action) => {
       return set(
         state,
         ['pendingMutations'],
-        state.pendingMutations.filter(x => x !== action.key)
+        state.pendingMutations.filter(x => x.key !== action.key)
       )
   }
 

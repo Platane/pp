@@ -7,6 +7,7 @@ const injectState = connect(
   state => ({
     session: selectCurrentSession(state),
     router: state.router,
+    creating: !!state.resource.pendingMutations.length,
   }),
   { startNewSession: createSession }
 )

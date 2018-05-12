@@ -40,7 +40,7 @@ export const SubmitQuestion = ({ path, submitQuestion, close }) => (
 
         <Separator />
 
-        <Button onClick={close} color={vibrant[1]}>
+        <Button type="button" onClick={close} color={vibrant[1]}>
           take me back
         </Button>
       </ButtonBar>

@@ -11,6 +11,7 @@ import {
   Input,
 } from '~/component/PopupContainer'
 import { Separator } from '~/component/Separator'
+import { Link } from '~/component/Link'
 
 const createSubmitHandler = subscribeToNewsletter => e => {
   e.preventDefault()
@@ -22,6 +23,8 @@ const createSubmitHandler = subscribeToNewsletter => e => {
 
 export const Result = ({
   isEnd,
+  email_sent,
+  currentSessionId,
   score,
   subscribeToNewsletter,
   startOver,
@@ -34,18 +37,36 @@ export const Result = ({
 
     <Separator />
 
-    <form onSubmit={createSubmitHandler(subscribeToNewsletter)}>
-      <Input
-        type="mail"
-        placeholder="enter your email address for full results"
-      />
+    {!email_sent ? (
+      <form onSubmit={createSubmitHandler(subscribeToNewsletter)}>
+        <Input
+          type="mail"
+          placeholder="enter your email address for full results"
+        />
 
-      <Separator />
+        <Separator />
 
+        <ButtonBar>
+          <Button type="submit" color={vibrant[1]}>
+            Send my results
+          </Button>
+
+          <Separator />
+
+          <Button
+            type="button"
+            onClick={isEnd ? startOver : close}
+            color={vibrant[1]}
+          >
+            {isEnd ? 'Start over' : 'Continue'}
+          </Button>
+        </ButtonBar>
+      </form>
+    ) : (
       <ButtonBar>
-        <Button type="submit" color={vibrant[1]}>
-          Send my results
-        </Button>
+        <Link href={`/session/${currentSessionId}/result`}>
+          <Button color={vibrant[1]}>See my results</Button>
+        </Link>
 
         <Separator />
 
@@ -53,6 +74,6 @@ export const Result = ({
           {isEnd ? 'Start over' : 'Continue'}
         </Button>
       </ButtonBar>
-    </form>
+    )}
   </PopupContainer>
 )

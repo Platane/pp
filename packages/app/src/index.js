@@ -1,7 +1,7 @@
 import 'unfetch/polyfill'
 
 import Raven from 'raven-js'
-import { SENTRY_DSN } from '~/config'
+import { SENTRY_DSN, PATHPREFIX } from '~/config'
 
 import { create } from './store/index'
 
@@ -28,7 +28,7 @@ if (SENTRY_DSN) {
 
 // init store
 const sideEffects = [
-  initRouter({ navigator: createDomNavigator() }),
+  initRouter({ navigator: createDomNavigator({ pathPrefix: PATHPREFIX }) }),
   initResourceFetcher,
   initServiceWorker,
   initLocalStorage,

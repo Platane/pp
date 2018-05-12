@@ -2,6 +2,7 @@ import { genUid } from '~/util/uid'
 
 const handlers = [
   require('./mutation/subscribeToNewsletter'),
+  require('./mutation/submitQuestion'),
   require('./mutation/createSession'),
   require('./mutation/setAnswer'),
 ]

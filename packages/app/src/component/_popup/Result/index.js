@@ -1,7 +1,10 @@
 import { connect } from 'preact-redux'
 import { Result as Dumb } from './Dumb'
 import { createSession } from '~/store/action/mutation'
-import { selectCurrentSessionStats } from '~/store/selector/currentSession'
+import {
+  selectCurrentSessionId,
+  selectCurrentSessionStats,
+} from '~/store/selector/currentSession'
 import { setQuery } from '~/store/action/router'
 import { subscribeToNewsletter } from '~/store/action/mutation'
 
@@ -9,13 +12,14 @@ const injectState = connect(
   state => {
     const stats = selectCurrentSessionStats(state)
 
-    if (!stats) return { score: 0, isEnd: false }
-
     return {
-      score: stats.answered
-        ? Math.round(stats.known / stats.answered * 100)
-        : 0,
-      isEnd: stats.total === stats.answered,
+      score:
+        stats && stats.answered
+          ? Math.round(stats.known / stats.answered * 100)
+          : 0,
+      isEnd: stats && stats.total === stats.answered,
+      email_sent: state.identity.user && state.identity.user.email_sent,
+      currentSessionId: selectCurrentSessionId(state),
     }
   },
   {
