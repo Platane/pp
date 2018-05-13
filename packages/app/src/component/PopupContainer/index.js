@@ -7,6 +7,7 @@ import {
   borderRadius,
   transitionUnit,
 } from '~/component/_abstract/palette'
+export { Input } from '~/component/Input'
 
 export const PopupContainer = ({ close, children }) => (
   <Container>
@@ -71,10 +72,15 @@ export const A = styled.a`
   display: block;
 `
 
-export const Input = styled.input`
-  height: 64px;
-  width: 100%;
-  padding: 16px 32px;
-  text-align: center;
-  font-size: 1.4em;
+export const Form = styled.form`
+  &:invalid {
+    button[type='submit'] {
+      transition: filter ${transitionUnit}ms ease;
+      filter: grayscale(1);
+    }
+  }
+  &:valid {
+    button[type='submit'] {
+    }
+  }
 `

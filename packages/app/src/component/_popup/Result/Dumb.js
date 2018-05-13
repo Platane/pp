@@ -8,10 +8,11 @@ import {
   A,
   Title,
   Subtitle,
-  Input,
+  Form,
 } from '~/component/PopupContainer'
 import { Separator } from '~/component/Separator'
 import { Link } from '~/component/Link'
+import { Input, emailPattern } from '~/component/Input'
 
 const createSubmitHandler = subscribeToNewsletter => e => {
   e.preventDefault()
@@ -38,9 +39,12 @@ export const Result = ({
     <Separator />
 
     {!email_sent ? (
-      <form onSubmit={createSubmitHandler(subscribeToNewsletter)}>
+      <Form onSubmit={createSubmitHandler(subscribeToNewsletter)}>
         <Input
           type="mail"
+          minlength="1"
+          pattern={emailPattern}
+          required
           placeholder="enter your email address for full results"
         />
 
@@ -61,7 +65,7 @@ export const Result = ({
             {isEnd ? 'Start over' : 'Continue'}
           </Button>
         </ButtonBar>
-      </form>
+      </Form>
     ) : (
       <ButtonBar>
         <Link href={`/session/${currentSessionId}/result`}>

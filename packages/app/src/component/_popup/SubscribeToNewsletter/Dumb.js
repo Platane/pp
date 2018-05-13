@@ -6,11 +6,12 @@ import { Button } from '~/component/Button'
 import {
   PopupContainer,
   ButtonBar,
+  Form,
   A,
   Title,
-  Input,
 } from '~/component/PopupContainer'
 import { Separator } from '~/component/Separator'
+import { Input, emailPattern } from '~/component/Input'
 
 const createSubmitHandler = subscribeToNewsletter => e => {
   e.preventDefault()
@@ -30,8 +31,14 @@ export const SubscribeToNewsletter = ({
 
     <Separator />
 
-    <form onSubmit={createSubmitHandler(subscribeToNewsletter)}>
-      <Input type="mail" placeholder="founder@startup.com" />
+    <Form onSubmit={createSubmitHandler(subscribeToNewsletter)}>
+      <Input
+        type="mail"
+        minlength="1"
+        placeholder="founder@startup.com"
+        pattern={emailPattern}
+        required
+      />
 
       <Separator />
 
@@ -46,7 +53,7 @@ export const SubscribeToNewsletter = ({
           send me stuff
         </Button>
       </ButtonBar>
-    </form>
+    </Form>
 
     <Separator />
 

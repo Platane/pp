@@ -17,6 +17,7 @@ export const reduceGlobal = (state, action) => {
   {
     state.resource.required
       .filter(key => !state.resource.toFetch.some(x => x.key == key))
+      .filter(key => !state.resource.cache[key])
       .forEach(
         key =>
           (state = set(

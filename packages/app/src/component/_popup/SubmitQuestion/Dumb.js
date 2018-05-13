@@ -8,9 +8,10 @@ import {
   A,
   Title,
   Subtitle,
-  Input,
+  Form,
 } from '~/component/PopupContainer'
 import { Separator } from '~/component/Separator'
+import { Input } from '~/component/Input'
 
 const createSubmitHandler = submitQuestion => e => {
   e.preventDefault()
@@ -20,7 +21,7 @@ const createSubmitHandler = submitQuestion => e => {
   submitQuestion(mail)
 }
 
-export const SubmitQuestion = ({ path, submitQuestion, close }) => (
+export const SubmitQuestion = ({ submitQuestion, close }) => (
   <PopupContainer close={close}>
     <Title>Got a question as tough as a VC's?</Title>
 
@@ -28,8 +29,13 @@ export const SubmitQuestion = ({ path, submitQuestion, close }) => (
 
     <Separator />
 
-    <form onSubmit={createSubmitHandler(submitQuestion)}>
-      <Input type="text" placeholder="Who's got equity besides investors?" />
+    <Form onSubmit={createSubmitHandler(submitQuestion)}>
+      <Input
+        type="text"
+        placeholder="Who's got equity besides investors?"
+        minlength="1"
+        required
+      />
 
       <Separator />
 
@@ -44,6 +50,6 @@ export const SubmitQuestion = ({ path, submitQuestion, close }) => (
           take me back
         </Button>
       </ButtonBar>
-    </form>
+    </Form>
   </PopupContainer>
 )

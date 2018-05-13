@@ -51,14 +51,6 @@ export const enhance = reduce => (state, action) => {
     })
   }
 
-  // change route on session creation start
-  if (
-    action.type === 'mutation:start' &&
-    action.action.type === 'mutation:session:create'
-  ) {
-    state = merge(state, ['router'], { query: {} })
-  }
-
   // change route on email submission
   if (
     action.type === 'mutation:success' &&
@@ -75,24 +67,21 @@ export const enhance = reduce => (state, action) => {
     else state = set(state, ['router', 'query'], { subscribeok: 1 })
   }
 
-  const lineChanged =
-    selectCurrentLineId(state) !== selectCurrentLineId(previousState)
+  // point the current line to the next not answered question
+  {
+    const session = selectCurrentSession(state)
+    const previousSession = selectCurrentSession(state)
 
-  const sessionChanged =
-    (selectCurrentSession(state) || {}).id !==
-    (selectCurrentSession(previousState) || {}).id
+    if (session) {
+      const firstEmptyLine = session.lines.find(
+        x => typeof x.answer != 'boolean'
+      )
 
-  if (lineChanged || sessionChanged) {
-    // goes to next empty line
-    if (state.router.key == 'sessionLine') {
-      const session = selectCurrentSession(state)
+      const currentLineId = selectCurrentLineId(state)
+      const previousLineId = selectCurrentLineId(state)
 
-      if (session) {
-        const firstEmptyLine = session.lines.find(
-          x => typeof x.answer != 'boolean'
-        )
-
-        if (firstEmptyLine)
+      if (firstEmptyLine) {
+        if (firstEmptyLine.id != currentLineId)
           state = merge(
             state,
             ['router'],
@@ -100,12 +89,21 @@ export const enhance = reduce => (state, action) => {
               `/session/${session.id}/step/${firstEmptyLine.question.id}`
             )
           )
-        else state = set(state, ['router', 'query'], { result: 1 })
+      } else {
+        if (!state.router.query.result && (previousLineId || !previousSession))
+          state = set(state, ['router', 'query'], { result: 1 })
       }
     }
+  }
 
-    // display break page every X line
-    {
+  // display break page every X line
+  {
+    const previousSession = selectCurrentSession(previousState)
+
+    const lineId = selectCurrentLineId(state)
+    const previousLineId = selectCurrentLineId(previousState)
+
+    if (previousLineId !== lineId && lineId && previousSession) {
       const lineIndex = selectCurrentLineIndex(state)
 
       if (lineIndex && lineIndex % 10 === 0 && !state.router.query.result)
