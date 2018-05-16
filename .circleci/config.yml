@@ -128,9 +128,9 @@ jobs:
           root: *workspace_root
           paths:
             - packages/ssr/lib
-            - packages/ssr/packages.json
+            - packages/ssr/package.json
             - packages/api/lib
-            - packages/api/packages.json
+            - packages/api/package.json
             - packages/app/dist
 
       - store_artifacts:
@@ -169,7 +169,7 @@ jobs:
     steps:
       - *attach_workspace
 
-      - run: npm install -g now
+      - run: sudo npm install -g now
 
       - run: now --token $NOW_TOKEN
 
