@@ -11,6 +11,7 @@ import {
   Form,
 } from '~/component/PopupContainer'
 import { Separator } from '~/component/Separator'
+import { SocialBar } from '~/component/SocialBar'
 import { Link } from '~/component/Link'
 import { Input, emailPattern } from '~/component/Input'
 
@@ -79,5 +80,9 @@ export const Result = ({
         </Button>
       </ButtonBar>
     )}
+
+    <Separator />
+
+    <SocialBar />
   </PopupContainer>
 )

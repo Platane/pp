@@ -11,6 +11,7 @@ import {
   Title,
 } from '~/component/PopupContainer'
 import { Separator } from '~/component/Separator'
+import { SocialBar } from '~/component/SocialBar'
 import { Input, emailPattern } from '~/component/Input'
 
 const createSubmitHandler = subscribeToNewsletter => e => {
@@ -54,6 +55,10 @@ export const SubscribeToNewsletter = ({
         </Button>
       </ButtonBar>
     </Form>
+
+    <Separator />
+
+    <SocialBar />
 
     <Separator />
 
