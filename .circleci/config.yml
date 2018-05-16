@@ -178,8 +178,16 @@ jobs:
           command: yarn deploy
 
       - run:
+          working_directory: packages/api
+          command: now -e ENV=production -e GC_JSON_KEY_FILE=@pitchperfect_gc_json_key_file_secret -e PORT=80 --public --token $NOW_TOKEN
+
+      - run:
           working_directory: packages/ssr
           command: yarn deploy
+
+      - run:
+          working_directory: packages/ssr
+          command: now -e ENV=production -e PORT=80 --public --token $NOW_TOKEN
 
 
 workflows:
