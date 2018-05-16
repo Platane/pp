@@ -29,6 +29,7 @@
     "flow-bin": "0.71.0",
     "flow-runtime": "0.17.0",
     "nodemon": "1.17.4",
+    "now": "11.1.10",
     "prettier": "1.12.1",
     "tap-spec": "4.1.1",
     "tape": "4.9.0"
@@ -37,9 +38,13 @@
     "start": "node -e \"require('./lib').create()\"",
     "start:dev": "nodemon start.js",
     "build:test": "rm -rf lib && NODE_ENV=test babel --out-dir ./lib ./src",
-    "resetdb": "node -e \"require('babel-register');require('./src/__tests__/bootstrap').run()\"",
-    "build": "rm -rf lib && NODE_ENV=production babel --out-dir ./lib --ignore __tests__ ./src",
-    "deploy:alias": "now alias `now ls pitchperfect-api | grep -m 1 -e pitchperfect-api- | cut -f 2 -d ' ' ` pitchperfect-api",
-    "deploy": "now -e ENV=production -e GC_JSON_KEY_FILE=@pitchperfect_gc_json_key_file_secret -e PORT=80 --public && npm run deploy:alias"
+    "resetdb":
+      "node -e \"require('babel-register');require('./src/__tests__/bootstrap').run()\"",
+    "build":
+      "rm -rf lib && NODE_ENV=production babel --out-dir ./lib --ignore __tests__ ./src",
+    "deploy:alias":
+      "now alias `now ls pitchperfect-api | grep -m 1 -e pitchperfect-api- | cut -f 2 -d ' ' ` pitchperfect-api",
+    "deploy":
+      "now -e ENV=production -e GC_JSON_KEY_FILE=@pitchperfect_gc_json_key_file_secret -e PORT=80 --public && npm run deploy:alias"
   }
 }

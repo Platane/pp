@@ -164,6 +164,23 @@ jobs:
             # will fail : can only set a restricted set of headers
             # gsutil setmeta -h "x-frame-options:SAMEORIGIN" gs://$BUCKET/index.html
 
+  deploy-microservices:
+    <<: *node_config
+    steps:
+      - *attach_workspace
+
+      - run: npm install -g now
+
+      - run: now --token $NOW_TOKEN
+
+      - run:
+          working_directory: packages/api
+          command: yarn deploy
+
+      - run:
+          working_directory: packages/ssr
+          command: yarn deploy
+
 
 workflows:
   version: 2
@@ -171,5 +188,8 @@ workflows:
     jobs:
       - test-build
       - deploy-asset:
+          requires:
+            - test-build
+      - deploy-microservices:
           requires:
             - test-build

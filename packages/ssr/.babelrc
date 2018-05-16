@@ -1,15 +1,6 @@
 {
   "plugins": [
     [
-      "module-resolver",
-      {
-        "alias": {
-          "~": "./src",
-          "app": "../app/lib"
-        }
-      }
-    ],
-    [
       "transform-assets",
       {
         "extensions": ["jpg", "jpeg", "png", "gif"],
@@ -26,6 +17,15 @@
   "env": {
     "production": {
       "plugins": [
+        [
+          "module-resolver",
+          {
+            "alias": {
+              "~": "./src",
+              "app": "./lib/app/lib"
+            }
+          }
+        ],
         [
           "transform-inline-environment-variables",
           {
