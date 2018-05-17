@@ -61,6 +61,7 @@ export const render = async (pathname: string, query: Object) => {
 <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet"></link>
 <link rel="manifest" href="/manifest.json"></link>
+<meta charset="UTF-8"></meta>
 ${meta}
 <style>${css}</style>
 </head>
