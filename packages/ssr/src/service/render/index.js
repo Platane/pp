@@ -16,6 +16,8 @@ console.log('public path', publicPath, assetManifest['index.js'])
 // monkey patch node env
 global.fetch = fetch
 global.btoa = x => new Buffer(x).toString('base64')
+const qs = require('querystring')
+global.encodeURIComponent = x => qs.escape(x)
 
 // alias react to preact
 const moduleAlias = require('module-alias')
