@@ -132,6 +132,7 @@ jobs:
             - packages/api/lib
             - packages/api/package.json
             - packages/app/dist
+            - rules.json
 
       - store_artifacts:
           path: packages/app/dist
@@ -172,14 +173,19 @@ jobs:
       - run: sudo npm i -g --unsafe-perm now@11.1.11
 
       - run:
+          name: deploy ssr
+          working_directory: packages/ssr
+          command: now -e ENV=production -e PORT=80 --public --token $NOW_TOKEN
+
+      - run:
           name: deploy api
           working_directory: packages/api
           command: now -e ENV=production -e GC_JSON_KEY_FILE=@pitchperfect_gc_json_key_file_secret -e PORT=80 --public --token $NOW_TOKEN
 
       - run:
-          name: deploy ssr
-          working_directory: packages/ssr
-          command: now -e ENV=production -e PORT=80 --public --token $NOW_TOKEN
+          name: set up reverse proxy
+          command: now alias www.yellow-owl-lab.top -r ./rules.json --token $NOW_TOKEN
+
 
 
 workflows:

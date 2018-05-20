@@ -1,0 +1,17 @@
+{
+  "rules": [
+    {
+      "pathname": "/graphql",
+      "method": ["POST"],
+      "dest": "pitchperfect-api.now.sh"
+    },
+    {
+      "pathname": "/**",
+      "method": ["GET"],
+      "dest": "pitchperfect-ssr.now.sh"
+    },
+    {
+      "dest": "storage.googleapis.com/pitchperfect/index.html"
+    }
+  ]
+}
