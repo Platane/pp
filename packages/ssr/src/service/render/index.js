@@ -11,6 +11,8 @@ import fetch from 'node-fetch'
 const assetManifest = require('app/../dist/assetManifest.json')
 const { publicPath } = require('app/../dist/stats.json')
 
+console.log('public path', publicPath, assetManifest['index.js'])
+
 // monkey patch node env
 global.fetch = fetch
 global.btoa = x => new Buffer(x).toString('base64')

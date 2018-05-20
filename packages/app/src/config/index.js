@@ -5,7 +5,8 @@ export const APP_ORIGIN =
   'https://storage.googleapis.com/pitchperfect' ||
   'http://localhost:8082'
 
-export const PATHPREFIX = process.env.BUCKET ? '/' + process.env.BUCKET : ''
+// export const PATHPREFIX = process.env.BUCKET ? '/' + process.env.BUCKET : ''
+export const PATHPREFIX = '/'
 
 export const API_ORIGIN =
   process.env.API_ORIGIN ||
