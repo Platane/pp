@@ -18,7 +18,7 @@ export const selectMeta = createSelector(
     const url = APP_ORIGIN + router.path
 
     if (session && sessionStats.answered > 0) {
-      const score = Math.floor(sessionStats.known / sessionStats.answered)
+      const score = Math.floor(sessionStats.known / sessionStats.answered * 100)
 
       return {
         title: 'Pitch Perfect',
