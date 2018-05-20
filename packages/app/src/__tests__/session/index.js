@@ -77,8 +77,6 @@ test('answer question', async t => {
 
   const lineId = selectCurrentLineId(store.getState())
 
-  console.log(store.getState())
-
   t.assert(lineId, 'should have a line selected')
 
   store.dispatch(setAnswer(sessionId, lineId, true))
