@@ -2378,9 +2378,9 @@ normalize-path@^2.0.0, normalize-path@^2.0.1, normalize-path@^2.1.1:
   dependencies:
     remove-trailing-separator "^1.0.1"
 
-now@^11.1.10:
-  version "11.1.10"
-  resolved "https://registry.yarnpkg.com/now/-/now-11.1.10.tgz#3496e7dfe9cb0c3b1286e0c8318d65f7c01436bc"
+now@11.1.12:
+  version "11.1.12"
+  resolved "https://registry.yarnpkg.com/now/-/now-11.1.12.tgz#7035a811c823343ba107d187aa42e4f3221097d0"
 
 npm-bundled@^1.0.1:
   version "1.0.3"
@@ -2713,9 +2713,9 @@ randomatic@^1.1.3:
     is-number "^3.0.0"
     kind-of "^4.0.0"
 
-raven-js@3.25.1:
-  version "3.25.1"
-  resolved "https://registry.yarnpkg.com/raven-js/-/raven-js-3.25.1.tgz#05df39b41af140e3b2fa34e2c522e2b4f99a98be"
+raven-js@3.25.2:
+  version "3.25.2"
+  resolved "https://registry.yarnpkg.com/raven-js/-/raven-js-3.25.2.tgz#d3ad1c694f70855dda6f705204ee6ab76ba62884"
 
 raw-body@^2.2.0:
   version "2.3.2"

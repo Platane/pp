@@ -70,7 +70,7 @@ export const enhance = reduce => (state, action) => {
   // point the current line to the next not answered question
   {
     const session = selectCurrentSession(state)
-    const previousSession = selectCurrentSession(state)
+    const previousSession = selectCurrentSession(previousState)
 
     if (session) {
       const firstEmptyLine = session.lines.find(
@@ -79,9 +79,12 @@ export const enhance = reduce => (state, action) => {
 
       const currentLineId = selectCurrentLineId(state)
       const previousLineId = selectCurrentLineId(state)
+      const lastLineId =
+        session.lines.length &&
+        session.lines[session.lines.length - 1].question.id
 
       if (firstEmptyLine) {
-        if (firstEmptyLine.id != currentLineId)
+        if (firstEmptyLine.question.id != currentLineId)
           state = merge(
             state,
             ['router'],
@@ -91,7 +94,11 @@ export const enhance = reduce => (state, action) => {
           )
       } else {
         if (!state.router.query.result && (previousLineId || !previousSession))
-          state = set(state, ['router', 'query'], { result: 1 })
+          state = set(state, ['router'], {
+            ...resolveRoute(`/session/${session.id}/step/${lastLineId}`),
+            query: { result: 1 },
+            hash: '',
+          })
       }
     }
   }

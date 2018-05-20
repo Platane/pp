@@ -10,7 +10,7 @@ import { selectCurrentLineId } from '~/store/selector/currentLine'
 import { createSession, setAnswer } from '~/store/action/mutation'
 import { goTo } from 'declarative-router/lib/redux/action'
 
-let sessionId
+let sessionId = 'aaaa'
 let session_created
 test('create session', async t => {
   const store = create([initResourceFetcher])
@@ -76,6 +76,8 @@ test('answer question', async t => {
   await waitFor(store, selectCurrentSession)
 
   const lineId = selectCurrentLineId(store.getState())
+
+  console.log(store.getState())
 
   t.assert(lineId, 'should have a line selected')
 

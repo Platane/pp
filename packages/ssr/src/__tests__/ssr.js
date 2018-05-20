@@ -18,7 +18,9 @@ test('render session', async t => {
 
   t.assert(res.includes('<body>'), 'result should contains body')
 
-  t.assert(res.includes("I've got this"), 'result should session')
+  console.log(res)
+
+  t.assert(res.includes("I've got this"), 'result should contains session')
 
   t.end()
 })

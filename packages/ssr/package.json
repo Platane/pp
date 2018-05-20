@@ -22,7 +22,7 @@
     "preact-redux": "2.0.3",
     "preact-render-to-string": "3.7.0",
     "prop-types": "15.6.1",
-    "raven-js": "3.25.1",
+    "raven-js": "3.25.2",
     "react-propstransition": "2.0.6",
     "redux": "4.0.0",
     "unfetch": "3.0.0"
@@ -44,7 +44,7 @@
     "flow-bin": "0.72.0",
     "flow-runtime": "0.17.0",
     "nodemon": "1.17.4",
-    "now": "11.1.10",
+    "now": "11.1.11",
     "prettier": "1.12.1",
     "tap-spec": "4.1.1",
     "tape": "4.9.0"
@@ -55,8 +55,11 @@
     "build:test": "rm -rf lib && NODE_ENV=test babel --out-dir ./lib ./src",
     "build:staticPage":
       "rm -rf dist && mkdir dist && node ./script/buildStaticPage.js",
+    "build:app":
+      "cd ../app && yarn build && yarn build:test && cd ../ssr && yarn build",
     "build":
       "rm -rf lib && NODE_ENV=production babel --out-dir ./lib --ignore __tests__ ./src && mkdir ./lib/app && mkdir ./lib/app/dist && cp -r ../app/lib ./lib/app/lib && cp ../app/dist/*.json ./lib/app/dist/ && node -e \"console.log(JSON.stringify({publicPath:require('../app/dist/stats.json').publicPath}))\" > ./lib/app/dist/stats.json",
+    "now-build": "echo 1",
     "deploy:alias":
       "now alias `now ls pitchperfect-ssr | grep -m 1 -e pitchperfect-ssr- | cut -f 2 -d ' ' ` pitchperfect-ssr",
     "deploy":

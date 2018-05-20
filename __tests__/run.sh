@@ -18,4 +18,4 @@ cd ../../
 
 
 
-# node __tests__/index.js | ./packages/api/node_modules/.bin/tap-spec
+node __tests__/index.js | ./packages/api/node_modules/.bin/tap-spec
