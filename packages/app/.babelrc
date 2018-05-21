@@ -24,6 +24,7 @@
               "NODE_ENV",
               "VERSION",
               "API_ORIGIN",
+              "APP_ORIGIN",
               "SENTRY_DSN",
               "BUCKET"
             ]

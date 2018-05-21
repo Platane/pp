@@ -1,11 +1,7 @@
 export const SENTRY_DSN = process.env.SENTRY_DSN || null
 
-export const APP_ORIGIN =
-  process.env.APP_ORIGIN ||
-  'https://storage.googleapis.com/pitchperfect' ||
-  'http://localhost:8082'
+export const APP_ORIGIN = process.env.APP_ORIGIN || 'http://localhost:8082'
 
-// export const PATHPREFIX = process.env.BUCKET ? '/' + process.env.BUCKET : ''
 export const PATHPREFIX = '/'
 
 export const API_ORIGIN =
