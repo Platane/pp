@@ -195,7 +195,7 @@ jobs:
 
       - run:
           name: alias api
-          working_directory: packages/ssr
+          working_directory: packages/api
           command: now alias `now ls pitchperfect-api | grep -m 1 -e pitchperfect-api- | cut -f 2 -d ' ' ` pitchperfect-api --token $NOW_TOKEN
 
       - run:
