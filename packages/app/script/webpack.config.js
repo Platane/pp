@@ -3,6 +3,8 @@ const path = require('path')
 const webpack = require('webpack')
 const WebpackAssetsManifest = require('webpack-assets-manifest')
 
+const { STATIC_ORIGIN } = require('../src/config')
+
 const production = process.env.NODE_ENV === 'production'
 
 module.exports = {
@@ -17,9 +19,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, '../dist'),
     filename: production ? '[name]-[hash:8].js' : '[name].js',
-    publicPath: process.env.BUCKET
-      ? `https://storage.googleapis.com/${process.env.BUCKET || 'bucket'}/`
-      : '/',
+    publicPath: STATIC_ORIGIN,
   },
 
   resolve: {

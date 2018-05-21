@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect'
-import { APP_ORIGIN } from '~/config'
+import { STATIC_ORIGIN, APP_ORIGIN } from '~/config'
 import {
   selectCurrentSessionStats,
   selectCurrentSession,
@@ -9,7 +9,7 @@ const selectRouter = x => x.router
 const selectRouterKey = createSelector(selectRouter, x => x.key)
 
 const formatImage = key =>
-  APP_ORIGIN + '/' + encodeURIComponent(btoa(key)) + '.jpg'
+  STATIC_ORIGIN + '/' + encodeURIComponent(btoa(key)) + '.jpg'
 
 export const selectMeta = createSelector(
   selectRouter,
