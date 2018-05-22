@@ -181,26 +181,26 @@ jobs:
       - run:
           name: deploy ssr
           working_directory: packages/ssr
-          command: now -e ENV=production -e PORT=80 --public --token $NOW_TOKEN
+          command: now deploy --token $NOW_TOKEN -e ENV=production -e PORT=80 --public
 
       - run:
           name: alias ssr
           working_directory: packages/ssr
-          command: now alias `now ls pitchperfect-ssr | grep -m 1 -e pitchperfect-ssr- | cut -f 2 -d ' ' ` pitchperfect-ssr --token $NOW_TOKEN
+          command: now alias --token $NOW_TOKEN `now ls pitchperfect-ssr | grep -m 1 -e pitchperfect-ssr- | cut -f 2 -d ' ' ` pitchperfect-ssr
 
       - run:
           name: deploy api
           working_directory: packages/api
-          command: now -e ENV=production -e GC_JSON_KEY_FILE=@pitchperfect_gc_json_key_file_secret -e PORT=80 --public --token $NOW_TOKEN
+          command: now deploy --token $NOW_TOKEN -e ENV=production -e GC_JSON_KEY_FILE=@pitchperfect_gc_json_key_file_secret -e PORT=80 --public
 
       - run:
           name: alias api
           working_directory: packages/api
-          command: now alias `now ls pitchperfect-api | grep -m 1 -e pitchperfect-api- | cut -f 2 -d ' ' ` pitchperfect-api --token $NOW_TOKEN
+          command: now alias --token $NOW_TOKEN `now ls pitchperfect-api | grep -m 1 -e pitchperfect-api- | cut -f 2 -d ' ' ` pitchperfect-api
 
       - run:
           name: set up reverse proxy
-          command: now alias www.yellow-owl-lab.top -r ./rules.json --token $NOW_TOKEN
+          command: now alias --token $NOW_TOKEN www.yellow-owl-lab.top -r ./rules.json
 
 
 
