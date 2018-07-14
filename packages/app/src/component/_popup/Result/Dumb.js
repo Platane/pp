@@ -32,7 +32,7 @@ export const Result = ({
   startOver,
   close,
 }) => (
-  <PopupContainer close={close}>
+  <PopupContainer close={isEnd ? null : close}>
     <Title>{`You're ${score}% Pitch Perfect`}</Title>
 
     <Subtitle>Not bad! You're nearly ready to pitch the VC</Subtitle>

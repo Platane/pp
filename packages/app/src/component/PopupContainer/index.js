@@ -11,9 +11,11 @@ export { Input } from '~/component/Input'
 
 export const PopupContainer = ({ close, children }) => (
   <Container>
-    <CloseButton onClick={close} href="#">
-      ×
-    </CloseButton>
+    {close && (
+      <CloseButton onClick={close} href="#">
+        ×
+      </CloseButton>
+    )}
     <Content>{children}</Content>
   </Container>
 )
