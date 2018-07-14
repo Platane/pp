@@ -15,7 +15,8 @@ const getStatus = (state): 'empty' | 'paused' | 'running' => {
 
   const q = state.router.query
 
-  const paused = q.subscribe || q.break || q.result || q.subscribeok
+  const paused =
+    q.subscribe || q.break || q.result || q.subscribeok || q.submitquestion
 
   if (paused) return 'paused'
 
