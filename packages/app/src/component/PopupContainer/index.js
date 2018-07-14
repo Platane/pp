@@ -85,4 +85,9 @@ export const Form = styled.form`
     button[type='submit'] {
     }
   }
+
+  button[disabled] {
+    transition: filter ${transitionUnit}ms ease;
+    filter: grayscale(1);
+  }
 `

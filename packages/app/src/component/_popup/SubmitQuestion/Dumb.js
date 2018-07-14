@@ -21,7 +21,7 @@ const createSubmitHandler = submitQuestion => e => {
   submitQuestion(mail)
 }
 
-export const SubmitQuestion = ({ submitQuestion, close }) => (
+export const SubmitQuestion = ({ pending, submitQuestion, close }) => (
   <PopupContainer close={close}>
     <Title>Got a question as tough as a VC's?</Title>
 
@@ -33,6 +33,7 @@ export const SubmitQuestion = ({ submitQuestion, close }) => (
       <Input
         type="text"
         placeholder="Who's got equity besides investors?"
+        disabled={pending}
         minlength="1"
         required
       />
@@ -40,7 +41,7 @@ export const SubmitQuestion = ({ submitQuestion, close }) => (
       <Separator />
 
       <ButtonBar>
-        <Button type="submit" color={vibrant[1]}>
+        <Button type="submit" disabled={pending} color={vibrant[1]}>
           Submit question
         </Button>
 

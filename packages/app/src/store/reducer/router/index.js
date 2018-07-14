@@ -67,6 +67,14 @@ export const enhance = reduce => (state, action) => {
     else state = set(state, ['router', 'query'], { subscribeok: 1 })
   }
 
+  // change route on question submission
+  if (
+    action.type === 'mutation:success' &&
+    action.action.type === 'mutation:user:submitQuestion'
+  ) {
+    state = set(state, ['router', 'query'], { questionok: 1 })
+  }
+
   // point the current line to the next not answered question
   {
     const session = selectCurrentSession(state)

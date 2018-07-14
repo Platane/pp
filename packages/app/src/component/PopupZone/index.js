@@ -12,6 +12,7 @@ const injectState = connect(state => {
     active:
       (q.submitquestion && 'submitquestion') ||
       (q.subscribeok && 'subscribeok') ||
+      (q.questionok && 'questionok') ||
       (q.subscribe && 'subscribe') ||
       (q.result && 'result') ||
       (q.break && 'break') ||

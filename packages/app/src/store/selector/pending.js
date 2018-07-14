@@ -13,3 +13,9 @@ export const selectSessionCreationPending = createSelector(
   pendingMutations =>
     pendingMutations.some(x => x.type === 'mutation:session:create')
 )
+
+export const selectSubmitQuestionPending = createSelector(
+  x => x.resource.pendingMutations,
+  pendingMutations =>
+    pendingMutations.some(x => x.type === 'mutation:user:submitQuestion')
+)

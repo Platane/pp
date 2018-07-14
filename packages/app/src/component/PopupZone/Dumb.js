@@ -9,6 +9,7 @@ import {
 } from '~/component/_abstract/palette'
 import { SubscribeToNewsletter } from '~/component/_popup/SubscribeToNewsletter'
 import { ThanksForSubscribe } from '~/component/_popup/ThanksForSubscribe'
+import { ThanksForTheQuestion } from '~/component/_popup/ThanksForTheQuestion'
 import { SubmitQuestion } from '~/component/_popup/SubmitQuestion'
 import { Result } from '~/component/_popup/Result'
 import { Break } from '~/component/_popup/Break'
@@ -24,6 +25,7 @@ export const PopupZone = ({ active }) => (
           <Content fadeIn={next} fadeOut={previous}>
             {(active === 'subscribe' && <SubscribeToNewsletter />) ||
               (active === 'subscribeok' && <ThanksForSubscribe />) ||
+              (active === 'questionok' && <ThanksForTheQuestion />) ||
               (active === 'submitquestion' && <SubmitQuestion />) ||
               (active === 'break' && <Break />) ||
               (active === 'result' && <Result />) ||
