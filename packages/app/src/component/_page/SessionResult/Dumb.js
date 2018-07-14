@@ -9,6 +9,7 @@ import {
 import { Link } from '~/component/Link'
 import { Button } from '~/component/Button'
 import { Spinner } from '~/component/Spinner'
+import { SocialBar } from '~/component/SocialBar'
 import { SubscriptionFooter } from '~/component/SubscriptionFooter'
 import { categories, category_label } from '~/constant'
 
@@ -59,13 +60,11 @@ export const SessionResult = ({ session, startNewSession }) => (
         <Button onClick={startNewSession} color={vibrant[1]}>
           Start over
         </Button>
-
-        <Separator />
-
-        <Button outline color={vibrant[0]}>
-          share PitchPerfect
-        </Button>
       </ButtonBar>
+
+      <Separator />
+
+      <SocialBar />
     </Center>
 
     <SubscriptionFooter />
