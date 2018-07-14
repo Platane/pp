@@ -59,8 +59,8 @@ const fadeOut = keyframes`
 
 const alternativeFadeOut = keyframes`
   0%{ opacity: 1; transform: scale(1,1)}
-  15%{ opacity: 1; transform: translateY(-30px) scale(1.25,1.25) rotate(3deg)}
-  44%{ opacity: 0; transform: translateY(110px) rotate(18deg)}
+  15%{ opacity: 1; transform: translateY(-30px) scale(1.4,1.4) rotate(3deg)}
+  44%{ opacity: 0; transform: translateY(110px) scale(1.1,1.1) rotate(18deg)}
   100%{ opacity: 0}
 `
 
