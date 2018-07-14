@@ -71,8 +71,9 @@ export const enhance = reduce => (state, action) => {
   {
     const session = selectCurrentSession(state)
     const previousSession = selectCurrentSession(previousState)
+    const isResultPage = state.router.key === 'sessionResult'
 
-    if (session) {
+    if (session && !isResultPage) {
       const firstEmptyLine = session.lines.find(
         x => typeof x.answer != 'boolean'
       )
